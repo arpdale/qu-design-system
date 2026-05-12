@@ -1,0 +1,15 @@
+# Source
+components/
+tsup.config.ts
+tsconfig.json
+
+# Dev artifacts
+node_modules/
+*.tsbuildinfo
+
+# Screenshots (large PNGs — not needed in npm bundle)
+screenshots/
+
+# Git
+.gitignore
+.git/

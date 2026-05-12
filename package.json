@@ -1,24 +1,43 @@
 {
-  "name": "notify-ds",
-  "version": "1.0.0",
+  "name": "@david-richard/notify-ds",
+  "version": "1.0.1",
   "description": "Qu Notify design system — tokens, components, and brand assets for the Qu Notify restaurant analytics app.",
-  "keywords": ["design-system", "qu", "notify", "react", "tailwind", "tokens"],
+  "keywords": [
+    "design-system",
+    "qu",
+    "notify",
+    "react",
+    "tailwind",
+    "tokens"
+  ],
   "license": "UNLICENSED",
   "private": false,
-
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".":                   "./components/index.ts",
-    "./components":        "./components/index.ts",
-    "./tokens":            "./tokens.json",
-    "./tailwind":          "./tailwind.config.js",
-    "./tokens.css":        "./tokens.css",
-    "./assets/icons/*":   "./assets/icons/*",
-    "./assets/*":         "./assets/*",
-    "./fonts/*":          "./fonts/*"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./tokens": "./tokens.json",
+    "./tailwind": "./tailwind.config.js",
+    "./tokens.css": "./tokens.css",
+    "./assets/icons/*": "./assets/icons/*",
+    "./assets/*": "./assets/*",
+    "./fonts/*": "./fonts/*"
   },
-
   "files": [
-    "components/",
+    "dist/",
     "assets/",
     "fonts/",
     "tokens.json",
@@ -27,29 +46,33 @@
     "constraints.md",
     "screen-anatomy.md"
   ],
-
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.1"
+  },
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
   },
-
   "peerDependenciesMeta": {
-    "react":     { "optional": false },
-    "react-dom": { "optional": false }
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    }
   },
-
   "devDependencies": {
-    "@radix-ui/react-slot":  "^1.1.0",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0",
+    "tsup": "^8.5.1",
     "typescript": "^5.0.0"
   },
-
-  "scripts": {
-    "typecheck": "tsc --noEmit"
-  },
-
   "repository": {
     "type": "git",
     "url": "https://github.com/arpdale/qu-design-system.git"
