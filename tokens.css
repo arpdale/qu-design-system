@@ -1,0 +1,519 @@
+/**
+ * notify-ds — tokens.css
+ * Qu Notify Design System — complete CSS custom properties
+ *
+ * Structure:
+ *   1. Font imports (Google Fonts + @font-face for Zilla Slab)
+ *   2. :root — Primitives   --p-*
+ *   3. :root — Semantic     --color-*, --shadow-*, --gradient-*
+ *   4. :root — Radius       --radius-*
+ *   5. :root — Spacing      --space-*
+ *   6. :root — Typography   --font-*, --text-*, --weight-*
+ *   7. :root — Type roles   --type-* (composite role tokens)
+ *   8. :root — Component    --button-*, --input-*, --tile-*, --nav-*
+ *   9. @theme block         Tailwind v4 utility mapping
+ *
+ * Usage:
+ *   @import 'notify-ds/tokens.css';          CSS/PostCSS
+ *   import 'notify-ds/tokens.css'            Vite / webpack
+ *
+ * For Tailwind v3, use tailwind.config.js instead of the @theme block.
+ */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. FONT IMPORTS
+   Inter + Red Hat Text + Red Hat Display from Google Fonts.
+   Zilla Slab loaded locally from ./fonts/ (not fully on GFonts).
+───────────────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Red+Hat+Text:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap');
+
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('./fonts/ZillaSlab-Light.ttf') format('truetype');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('./fonts/ZillaSlab-LightItalic.ttf') format('truetype');
+  font-weight: 300; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('./fonts/ZillaSlab-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('./fonts/ZillaSlab-Italic.ttf') format('truetype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('./fonts/ZillaSlab-Medium.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('./fonts/ZillaSlab-MediumItalic.ttf') format('truetype');
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('./fonts/ZillaSlab-SemiBold.ttf') format('truetype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('./fonts/ZillaSlab-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('./fonts/ZillaSlab-Bold.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('./fonts/ZillaSlab-BoldItalic.ttf') format('truetype');
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. PRIMITIVES  --p-*
+   Raw values. Never consume these directly in components — use semantic tokens.
+───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+
+  /* Brand */
+  --p-brand-tech-blue:    #40CCF2;   /* Primary CTA: buttons, input focus, selectors, checkboxes */
+  --p-brand-teal:         #339FB8;   /* Secondary interactive: outlines, links, action labels */
+  --p-brand-red:          #EF2149;   /* Error borders, toasts, required asterisk */
+  --p-brand-confidence:   #B4002F;   /* Strong destructive — reserved */
+  --p-brand-stable-blue:  #0D2A4B;   /* KI gradient anchor — reserved */
+  --p-brand-quick-serve:  #E4ECEF;   /* Reserved */
+  --p-brand-gray-300:     #6B7280;   /* Secondary/inactive text, unselected nav labels */
+
+  /* Neutrals */
+  --p-neutral-black:      #000000;   /* Primary text, tab/nav selected fill */
+  --p-neutral-near-black: #0A0A0A;
+  --p-neutral-white:      #FFFFFF;   /* Card backgrounds, text on dark fills */
+  --p-neutral-gray-50:    #F4F4F4;   /* App screen background — ALWAYS use, never white */
+  --p-neutral-gray-100:   #DEDEDE;   /* Tab container, switcher container, inactive button bg */
+  --p-neutral-gray-200:   #C9C9C9;   /* Input border (normal), disabled borders */
+  --p-neutral-gray-400:   #B1B1B1;   /* Placeholder text, captions */
+
+  /* Dark surfaces (Kitchen Intelligence) */
+  --p-surface-dark-from:  #252934;
+  --p-surface-dark-to:    #16171A;
+
+  /* Accents — semantic (bold) */
+  --p-accent-green:       #16A34A;
+  --p-accent-green-vivid: #00C16A;
+  --p-accent-blue:        #2F80ED;
+  --p-accent-yellow:      #EDC948;
+  --p-accent-orange:      #FA6A0A;
+
+  /* Accents — soft backgrounds */
+  --p-accent-green-soft:  #B3F5D1;   /* Mint */
+  --p-accent-blue-soft:   #BEDBFF;   /* Mist */
+  --p-accent-red-soft:    #FFC9C9;   /* Rose */
+  --p-accent-yellow-soft: #FFF085;   /* Pollen */
+  --p-accent-orange-soft: #EAC1C3;   /* Peel */
+
+  /* Motion */
+  --p-duration-fast:      120ms;     /* Color transitions, hover */
+  --p-duration-medium:    180ms;     /* Toggle slide, tab selection */
+  --p-easing-standard:    cubic-bezier(0.2, 0, 0, 1);
+
+  /* Opacity */
+  --p-opacity-disabled:   0.5;       /* Applied to whole component — never swap colors for disabled */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   3. SEMANTIC COLORS  --color-*
+   Alias layer. All component styles should consume these.
+───────────────────────────────────────────────────────────────────────────── */
+
+  /* Surfaces */
+  --color-bg-app:           var(--p-neutral-gray-50);    /* Page-level background */
+  --color-bg-card:          var(--p-neutral-white);      /* Cards, tiles, sheets */
+  --color-bg-input:         var(--p-neutral-white);
+  --color-bg-input-disabled:var(--p-neutral-gray-50);
+
+  /* Text hierarchy */
+  --color-text-primary:     var(--p-neutral-black);
+  --color-text-secondary:   var(--p-brand-gray-300);     /* Secondary text — gray, not teal */
+  --color-text-tertiary:    var(--p-brand-gray-300);
+  --color-text-disabled:    var(--p-neutral-gray-400);
+  --color-text-inverse:     var(--p-neutral-white);
+  --color-text-on-brand:    var(--p-neutral-black);      /* Text on cyan bg */
+  --color-text-link:        var(--p-accent-blue);
+
+  /* Interactive — secondary uses teal (not gray) */
+  --color-interactive-secondary: var(--p-brand-teal);    /* Links, action labels, check numbers */
+
+  /* Borders */
+  --color-border:           var(--p-neutral-gray-200);
+  --color-border-focus:     var(--p-brand-tech-blue);
+  --color-border-error:     var(--p-brand-red);
+  --color-ring:             var(--p-brand-tech-blue);
+
+  /* Primary button/CTA */
+  --color-primary:              var(--p-brand-tech-blue);  /* Cyan — NOT black */
+  --color-primary-foreground:   var(--p-neutral-black);    /* Black text on cyan bg */
+  --color-primary-hover:        var(--p-brand-teal);
+  --color-primary-pressed:      var(--p-brand-stable-blue);
+
+  /* Secondary button */
+  --color-secondary-border:     var(--p-brand-teal);
+  --color-secondary-foreground: var(--p-brand-teal);
+  --color-secondary-hover:      rgba(51, 159, 184, 0.08);
+  --color-secondary-pressed:    rgba(51, 159, 184, 0.16);
+
+  /* Tertiary button */
+  --color-tertiary-foreground:  var(--p-brand-teal);
+  --color-tertiary-hover:       rgba(51, 159, 184, 0.06);
+
+  /* Link */
+  --color-link-foreground:      var(--p-accent-blue);
+
+  /* Nav/tab selected state — BLACK, not cyan */
+  --color-nav-selected:         var(--p-neutral-black);
+  --color-nav-selected-text:    var(--p-neutral-white);
+
+  /* Inactive */
+  --color-inactive:             var(--p-neutral-gray-100);
+  --color-inactive-foreground:  var(--p-brand-gray-300);
+  --color-inactive-border:      var(--p-neutral-gray-200);
+
+  /* Selector (context bar) */
+  --color-selector-primary-bg:          var(--p-brand-tech-blue);
+  --color-selector-primary-text:        var(--p-neutral-black);
+  --color-selector-secondary-border:    var(--p-brand-teal);
+  --color-selector-secondary-text:      var(--p-brand-teal);
+
+  /* Input-specific */
+  --color-input-border:         var(--p-neutral-gray-200);
+  --color-input-border-active:  var(--p-brand-tech-blue);
+  --color-input-border-error:   var(--p-brand-red);
+  --color-input-placeholder:    var(--p-neutral-gray-400);
+  --color-input-icon:           var(--p-neutral-gray-400);
+  --color-input-icon-active:    var(--p-brand-tech-blue);
+  --color-input-icon-error:     var(--p-brand-red);
+  --color-input-required-mark:  var(--p-brand-red);
+
+  /* Status — semantic */
+  --color-destructive:          var(--p-brand-red);
+  --color-destructive-strong:   var(--p-brand-confidence);
+  --color-success:              var(--p-accent-green);
+  --color-success-vivid:        var(--p-accent-green-vivid);
+  --color-success-soft:         var(--p-accent-green-soft);
+  --color-info:                 var(--p-accent-blue);
+  --color-info-soft:            var(--p-accent-blue-soft);
+  --color-error:                var(--p-brand-red);
+  --color-error-soft:           var(--p-accent-red-soft);
+  --color-warning:              var(--p-accent-yellow);
+  --color-warning-soft:         var(--p-accent-yellow-soft);
+  --color-alert:                var(--p-accent-orange);
+  --color-alert-soft:           var(--p-accent-orange-soft);
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SHADOWS  --shadow-*
+───────────────────────────────────────────────────────────────────────────── */
+
+  --shadow-card:   0px 4px 4px 0px rgba(0, 0, 0, 0.06);   /* Metric tiles, data cards */
+  --shadow-nav:    0px 4px 4px 0px rgba(0, 0, 0, 0.14);   /* Bottom nav pill */
+  --shadow-modal:  0px 4px 4px 0px rgba(0, 0, 0, 0.25);   /* Modal sheets */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GRADIENTS  --gradient-*
+───────────────────────────────────────────────────────────────────────────── */
+
+  --gradient-ki-bg:
+    linear-gradient(180deg, #252934 0%, #16171A 100%);     /* Kitchen Intelligence dark bg */
+
+  --gradient-nav-glass:
+    linear-gradient(180deg, rgba(220,220,220,0.20) 0%, rgba(118,118,118,0.20) 87%); /* Bottom nav */
+
+  --gradient-glass:
+    linear-gradient(180deg, rgba(255,255,255,0.10) 10%, rgba(153,153,153,0.10) 100%); /* Menu overlay */
+
+  --gradient-brand-divider:
+    linear-gradient(90deg, #40CCF2 0%, #EF2149 100%);      /* Brand accent divider line */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   4. RADIUS  --radius-*
+───────────────────────────────────────────────────────────────────────────── */
+
+  --radius-xs:    2px;     /* Subtle rounding */
+  --radius-sm:    4px;
+  --radius-md:    6px;
+  --radius-lg:    8px;     /* Switcher container and segments */
+  --radius-xl:    12px;    /* Filters */
+  --radius-2xl:   16px;    /* Metric tiles, nav icon labels */
+  --radius-3xl:   24px;    /* Modals, card containers */
+  --radius-menu:  60px;    /* Menu bottom sheet, bottom nav pill */
+  --radius-full:  9999px;  /* Inputs, buttons, pills, selectors, tags */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   5. SPACING  --space-*  (8px base rhythm)
+───────────────────────────────────────────────────────────────────────────── */
+
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:   10px;   /* Compact UI exception */
+  --space-lg:   16px;   /* Standard horizontal screen padding */
+  --space-xl:   18px;
+  --space-2xl:  22px;
+  --space-3xl:  24px;
+  --space-4xl:  26px;
+  --space-5xl:  30px;
+  --space-6xl:  40px;
+  --space-7xl:  48px;
+  --space-8xl:  60px;
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   6. TYPOGRAPHY  --font-*, --text-*, --weight-*
+───────────────────────────────────────────────────────────────────────────── */
+
+  /* Families */
+  --font-primary:         'Inter', system-ui, sans-serif;
+  --font-secondary:       'Red Hat Text', 'Red Hat Display', system-ui, sans-serif;
+  --font-display:         'Zilla Slab', Georgia, serif;
+  --font-display-heading: 'Red Hat Display', system-ui, sans-serif;
+  --font-system:          -apple-system, 'SF Pro', system-ui, sans-serif;
+
+  /* Sizes */
+  --text-2xs:   10px;   /* Nav item labels */
+  --text-xs:    12px;   /* Captions, help text, pills, tag labels */
+  --text-sm:    14px;   /* Filters, tabs, table items, small buttons, menu items */
+  --text-md:    16px;   /* Body text, placeholder text */
+  --text-lg:    18px;   /* Page headers, input labels, medium buttons */
+  --text-xl:    20px;   /* Rarely used */
+  --text-2xl:   24px;   /* Metric tile values, login headers */
+  --text-3xl:   26px;   /* Modal headers */
+  --text-4xl:   30px;   /* Rarely used */
+  --text-5xl:   34px;   /* Day-part selector (Kitchen Intelligence) */
+  --text-6xl:   40px;   /* Display */
+  --text-7xl:   72px;   /* Kitchen Intelligence score */
+
+  /* Weights */
+  --weight-light:     300;
+  --weight-normal:    400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-extrabold: 800;
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   7. TYPE ROLES  --type-*
+   Composite shorthand tokens for recurring text patterns.
+   Usage: font-family: var(--type-metric-font); font-size: var(--type-metric-size);
+───────────────────────────────────────────────────────────────────────────── */
+
+  /* Metric value — large number on dashboard tiles */
+  --type-metric-font:           var(--font-primary);
+  --type-metric-size:           var(--text-2xl);
+  --type-metric-weight:         var(--weight-semibold);
+
+  /* Page header — centered title on detail screens */
+  --type-page-header-font:      var(--font-secondary);
+  --type-page-header-size:      var(--text-lg);
+  --type-page-header-weight:    var(--weight-medium);
+
+  /* Section label — bold left-aligned section titles (Totals, Checks, Tools) */
+  --type-section-label-font:    var(--font-secondary);
+  --type-section-label-size:    var(--text-md);
+  --type-section-label-weight:  var(--weight-semibold);
+
+  /* ALL CAPS section category — KITCHEN, NETWORK, NOTIFY wordmark */
+  --type-section-caps-font:     var(--font-secondary);
+  --type-section-caps-size:     var(--text-lg);
+  --type-section-caps-weight:   var(--weight-semibold);
+  --type-section-caps-ls:       0.08em;
+
+  /* Body */
+  --type-body-font:             var(--font-primary);
+  --type-body-size:             var(--text-md);
+  --type-body-weight:           var(--weight-normal);
+
+  /* Label — input label, menu item text */
+  --type-label-font:            var(--font-secondary);
+  --type-label-size:            var(--text-lg);
+  --type-label-weight:          var(--weight-medium);
+
+  /* Caption / helper text */
+  --type-caption-font:          var(--font-primary);
+  --type-caption-size:          var(--text-xs);
+  --type-caption-weight:        var(--weight-normal);
+
+  /* Button label */
+  --type-btn-font:              var(--font-secondary);   /* Red Hat Text per spec */
+  --type-btn-size:              var(--text-sm);
+  --type-btn-weight:            var(--weight-medium);
+
+  /* Tab / filter label */
+  --type-tab-font:              var(--font-primary);
+  --type-tab-size:              var(--text-sm);
+  --type-tab-weight:            var(--weight-medium);
+
+  /* Nav item label */
+  --type-nav-font:              var(--font-primary);
+  --type-nav-size:              var(--text-2xs);
+  --type-nav-weight-default:    var(--weight-normal);
+  --type-nav-weight-selected:   var(--weight-semibold);
+
+  /* Display heading — Zilla Slab only */
+  --type-display-font:          var(--font-display);
+  --type-display-size:          var(--text-4xl);
+  --type-display-weight:        var(--weight-bold);
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   8. COMPONENT GEOMETRY  --button-*, --input-*, --tile-*, --nav-*
+───────────────────────────────────────────────────────────────────────────── */
+
+  /* Button */
+  --button-radius:        var(--radius-full);
+  --button-icon-radius:   var(--radius-md);     /* Icon-only button — square-ish corners */
+
+  --button-xsm-h:  24px;  --button-xsm-px: 12px; --button-xsm-gap:  4px;
+  --button-xsm-fs: var(--text-xs);   --button-xsm-lh: 16px;
+
+  --button-sm-h:   32px;  --button-sm-px:  14px; --button-sm-gap:  6px;
+  --button-sm-fs:  var(--text-sm);   --button-sm-lh:  18px;
+
+  --button-md-h:   40px;  --button-md-px:  16px; --button-md-gap:  8px;
+  --button-md-fs:  var(--text-sm);   --button-md-lh:  20px;
+
+  --button-lg-h:   48px;  --button-lg-px:  20px; --button-lg-gap:  8px;
+  --button-lg-fs:  var(--text-md);   --button-lg-lh:  24px;
+
+  /* Input */
+  --input-height:        48px;
+  --input-radius:        var(--radius-full);
+  --input-padding-x:     16px;
+  --input-border-width:  1.5px;
+
+  /* Metric tile */
+  --tile-radius:         var(--radius-2xl);   /* 16px */
+  --tile-padding:        16px;
+  --tile-shadow:         var(--shadow-card);
+
+  /* Bottom nav */
+  --nav-height:          72px;
+  --nav-radius:          var(--radius-menu);  /* 60px */
+  --nav-max-width:       360px;
+  --nav-shadow:          var(--shadow-nav);
+
+  /* Tab bar */
+  --tab-bar-radius:      var(--radius-full);
+  --tab-bar-padding:     4px;
+  --tab-radius:          var(--radius-full);
+  --tab-padding-x:       16px;
+  --tab-padding-y:       7px;
+
+  /* Switcher */
+  --switcher-radius:     var(--radius-lg);    /* 8px — not pill, distinguishes from TabBar */
+  --switcher-padding:    3px;
+  --switcher-seg-radius: var(--radius-md);    /* 6px */
+
+  /* Selector */
+  --selector-radius:     var(--radius-full);
+  --selector-padding-x:  14px;
+  --selector-padding-y:  8px;
+  --selector-border-width: 1.5px;
+
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   9. TAILWIND v4 @theme
+   Exposes tokens as Tailwind utility classes (bg-primary, text-foreground, etc.)
+   For Tailwind v3: use tailwind.config.js instead.
+───────────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  /* Colors */
+  --color-background:           var(--color-bg-card);
+  --color-foreground:           var(--color-text-primary);
+  --color-muted:                var(--p-neutral-gray-50);
+  --color-muted-foreground:     var(--color-text-secondary);
+  --color-border:               var(--color-border);
+  --color-ring:                 var(--color-ring);
+
+  --color-primary:              var(--color-primary);
+  --color-primary-foreground:   var(--color-primary-foreground);
+  --color-secondary:            var(--color-secondary-foreground);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+
+  --color-destructive:          var(--color-destructive);
+  --color-success:              var(--color-success);
+  --color-warning:              var(--color-warning);
+  --color-info:                 var(--color-info);
+  --color-alert:                var(--color-alert);
+  --color-error:                var(--color-error);
+
+  --color-inactive:             var(--color-inactive);
+  --color-inactive-foreground:  var(--color-inactive-foreground);
+
+  /* Radius */
+  --radius-xs:    var(--radius-xs);
+  --radius-sm:    var(--radius-sm);
+  --radius-md:    var(--radius-md);
+  --radius-lg:    var(--radius-lg);
+  --radius-xl:    var(--radius-xl);
+  --radius-2xl:   var(--radius-2xl);
+  --radius-3xl:   var(--radius-3xl);
+  --radius-menu:  var(--radius-menu);
+  --radius-full:  var(--radius-full);
+
+  /* Fonts */
+  --font-sans:    var(--font-primary);
+  --font-ui:      var(--font-secondary);
+  --font-display: var(--font-display);
+
+  /* Shadows */
+  --shadow-card:   var(--shadow-card);
+  --shadow-nav:    var(--shadow-nav);
+  --shadow-modal:  var(--shadow-modal);
+}
+
+
+/*
+ * ── NOTES ────────────────────────────────────────────────────────────────────
+ *
+ * PRIMARY BUTTON COLOR
+ *   --color-primary is #40CCF2 (cyan), not black. Confirmed by production
+ *   screenshots. Black (#000) is the nav/tab selected-state color (--color-nav-selected).
+ *   These are separate roles.
+ *
+ * SECONDARY TEXT vs SECONDARY INTERACTIVE
+ *   --color-text-secondary = #6B7280 (gray-300) — for passive secondary text labels.
+ *   --color-interactive-secondary = #339FB8 (teal) — for interactive secondary elements
+ *   (links, action labels, check numbers in Check Search). Don't conflate these.
+ *
+ * DISABLED STATES
+ *   Always opacity: var(--p-opacity-disabled) = 0.5 on the entire component.
+ *   Never swap fill colors for disabled. The underlying variant colors stay intact.
+ *
+ * ZILLA SLAB
+ *   Display-only. Never body copy or UI labels.
+ *   @font-face above loads from ./fonts/ (relative to this CSS file).
+ *   Update the path if your bundler resolves assets differently.
+ *
+ * TAILWIND v4 @theme
+ *   The @theme block above is for Tailwind v4's CSS-first config.
+ *   For Tailwind v3, import tailwind.config.js as a preset instead.
+ *   Both can coexist — @theme is ignored by v3 PostCSS pipelines.
+ */

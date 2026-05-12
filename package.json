@@ -1,0 +1,57 @@
+{
+  "name": "notify-ds",
+  "version": "1.0.0",
+  "description": "Qu Notify design system — tokens, components, and brand assets for the Qu Notify restaurant analytics app.",
+  "keywords": ["design-system", "qu", "notify", "react", "tailwind", "tokens"],
+  "license": "UNLICENSED",
+  "private": false,
+
+  "exports": {
+    ".":                   "./components/index.ts",
+    "./components":        "./components/index.ts",
+    "./tokens":            "./tokens.json",
+    "./tailwind":          "./tailwind.config.js",
+    "./tokens.css":        "./tokens.css",
+    "./assets/icons/*":   "./assets/icons/*",
+    "./assets/*":         "./assets/*",
+    "./fonts/*":          "./fonts/*"
+  },
+
+  "files": [
+    "components/",
+    "assets/",
+    "fonts/",
+    "tokens.json",
+    "tokens.css",
+    "tailwind.config.js",
+    "constraints.md",
+    "screen-anatomy.md"
+  ],
+
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+
+  "peerDependenciesMeta": {
+    "react":     { "optional": false },
+    "react-dom": { "optional": false }
+  },
+
+  "devDependencies": {
+    "@radix-ui/react-slot":  "^1.1.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.0.0",
+    "typescript": "^5.0.0"
+  },
+
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arpdale/qu-design-system.git"
+  }
+}

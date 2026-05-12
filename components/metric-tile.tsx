@@ -1,0 +1,181 @@
+import * as React from "react"
+import { cn } from "@/lib/utils"
+import { TrendBadge } from "./badge"
+
+/**
+ * MetricTile — the core data display unit of the Qu Notify dashboard.
+ *
+ * Visual spec:
+ *   Container: white card, 16px border-radius, shadow: 0 4px 4px rgba(0,0,0,0.06)
+ *   Label:     Inter Regular 12px, gray (#6B7280)
+ *   Value:     Inter SemiBold 24px, black (#000)
+ *   Trend:     TrendBadge (green/red/neutral)
+ *   Sub-label: Inter Regular 12px, gray — secondary context (e.g. "vs last week")
+ *
+ * Variants:
+ *   size:    sm | md | lg
+ *   loading: skeleton state
+ *
+ * Usage (minimal):
+ *   <MetricTile label="Net Sales" value="$42,810" />
+ *
+ * Usage (with trend):
+ *   <MetricTile label="Average Check" value="$18.42" trend={11.8} trendLabel="vs last week" />
+ *
+ * Usage (with icon and custom value color):
+ *   <MetricTile
+ *     label="Labor %"
+ *     value="24.1%"
+ *     trend={-2.3}
+ *     icon={<UserIcon />}
+ *     valueColor="var(--color-success,#16A34A)"
+ *   />
+ *
+ * Usage (loading):
+ *   <MetricTile label="Net Sales" value="..." loading />
+ *
+ * Usage (grid):
+ *   <MetricTileGrid cols={2}>
+ *     <MetricTile label="Net Sales"    value="$42,810" trend={11.8} />
+ *     <MetricTile label="Avg Check"    value="$18.42"  trend={-1.2} />
+ *     <MetricTile label="Checks"       value="2,324"   />
+ *     <MetricTile label="Speed of Svc" value="3m 12s"  />
+ *   </MetricTileGrid>
+ */
+
+export interface MetricTileProps {
+  label: string
+  value: string | number
+  /** Percentage change. Positive = green, negative = red. */
+  trend?: number
+  trendLabel?: string
+  icon?: React.ReactNode
+  /** Override the value text color (e.g. for KPI goal states) */
+  valueColor?: string
+  size?: "sm" | "md" | "lg"
+  loading?: boolean
+  /** Click handler — makes the tile interactive */
+  onClick?: () => void
+  className?: string
+  /** Render as a specific element */
+  as?: "div" | "article"
+}
+
+export function MetricTile({
+  label,
+  value,
+  trend,
+  trendLabel,
+  icon,
+  valueColor,
+  size = "md",
+  loading = false,
+  onClick,
+  className,
+  as: Tag = "div",
+}: MetricTileProps) {
+  const valueSize = {
+    sm: "text-[18px]",
+    md: "text-[24px]",
+    lg: "text-[30px]",
+  }[size]
+
+  const padding = {
+    sm: "p-3",
+    md: "p-4",
+    lg: "p-5",
+  }[size]
+
+  return (
+    <Tag
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (e) => { if (e.key === "Enter" || e.key === " ") onClick() } : undefined}
+      className={cn(
+        // Card shell
+        "flex flex-col gap-1 rounded-[16px] bg-white",
+        "shadow-[0_4px_4px_rgba(0,0,0,0.06)]",
+        padding,
+        // Interactive
+        onClick && "cursor-pointer outline-none hover:shadow-[0_4px_12px_rgba(0,0,0,0.10)] transition-shadow duration-[120ms]",
+        onClick && "focus-visible:ring-2 focus-visible:ring-[var(--color-ring,#40CCF2)] focus-visible:ring-offset-2",
+        // Loading
+        loading && "animate-pulse",
+        className,
+      )}
+    >
+      {/* Label row */}
+      <div className="flex items-center justify-between gap-2">
+        <span
+          className={cn(
+            "font-['Inter'] text-[12px] font-normal leading-tight",
+            "text-[var(--color-text-tertiary,#6B7280)]",
+            loading && "h-3 w-24 rounded bg-gray-200",
+          )}
+        >
+          {!loading && label}
+        </span>
+        {icon && !loading && (
+          <span className="shrink-0 text-[var(--color-text-tertiary,#6B7280)] [&_svg]:size-4" aria-hidden="true">
+            {icon}
+          </span>
+        )}
+      </div>
+
+      {/* Value */}
+      <span
+        className={cn(
+          "font-['Inter'] font-semibold leading-tight tracking-tight",
+          valueSize,
+          loading && "mt-1 h-7 w-28 rounded bg-gray-200",
+        )}
+        style={valueColor && !loading ? { color: valueColor } : undefined}
+      >
+        {!loading && value}
+      </span>
+
+      {/* Trend + sub-label row */}
+      {(trend !== undefined || trendLabel) && !loading && (
+        <div className="flex items-center gap-1.5">
+          {trend !== undefined && <TrendBadge value={trend} size="sm" />}
+          {trendLabel && (
+            <span className="font-['Inter'] text-[11px] text-[var(--color-text-tertiary,#6B7280)]">
+              {trendLabel}
+            </span>
+          )}
+        </div>
+      )}
+      {loading && trend !== undefined && (
+        <div className="mt-1 h-4 w-16 rounded bg-gray-200" />
+      )}
+    </Tag>
+  )
+}
+
+/**
+ * MetricTileGrid — responsive grid wrapper.
+ *
+ * Usage:
+ *   <MetricTileGrid cols={2}> ... </MetricTileGrid>
+ */
+export interface MetricTileGridProps {
+  cols?: 1 | 2 | 3 | 4
+  children: React.ReactNode
+  className?: string
+}
+
+export function MetricTileGrid({ cols = 2, children, className }: MetricTileGridProps) {
+  const colClass = {
+    1: "grid-cols-1",
+    2: "grid-cols-2",
+    3: "grid-cols-3",
+    4: "grid-cols-4",
+  }[cols]
+
+  return (
+    <div className={cn("grid gap-3", colClass, className)}>
+      {children}
+    </div>
+  )
+}

@@ -1,0 +1,114 @@
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+/**
+ * Badge — Qu Notify status/trend pill label.
+ *
+ * Variants:
+ *   variant: default | success | error | warning | alert | info | neutral
+ *   size:    sm | md
+ *
+ * Usage:
+ *   <Badge>Open</Badge>
+ *   <Badge variant="success">+11.8%</Badge>
+ *   <Badge variant="error">-5.6%</Badge>
+ *   <Badge variant="warning">Delayed</Badge>
+ *   <Badge icon={<TrendUpIcon />} variant="success">Net Sales</Badge>
+ */
+
+const badgeVariants = cva(
+  [
+    "inline-flex items-center gap-1 rounded-full font-['Inter'] font-medium whitespace-nowrap",
+    "select-none leading-tight",
+  ],
+  {
+    variants: {
+      variant: {
+        default: "bg-[var(--color-inactive,#DEDEDE)] text-[var(--color-text-primary,#000)]",
+        success: "bg-[var(--color-success-soft,#B3F5D1)] text-[var(--color-success,#16A34A)]",
+        error:   "bg-[var(--color-error-soft,#FFC9C9)] text-[var(--color-destructive,#EF2149)]",
+        warning: "bg-[var(--color-warning-soft,#FFF085)] text-[#92680E]",
+        alert:   "bg-[var(--color-alert-soft,#EAC1C3)] text-[var(--color-alert,#FA6A0A)]",
+        info:    "bg-[var(--color-info-soft,#BEDBFF)] text-[var(--color-info,#2F80ED)]",
+        neutral: "bg-transparent text-[var(--color-text-secondary,#6B7280)] border border-[var(--color-border,#C9C9C9)]",
+        // Brand accent fills — used for status tags in Kitchen Intelligence
+        brand:   "bg-[var(--color-primary,#40CCF2)] text-[var(--color-text-primary,#000)]",
+      },
+      size: {
+        sm: "h-5 px-2 text-[11px]",
+        md: "h-6 px-2.5 text-[12px]",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "md",
+    },
+  },
+)
+
+export interface BadgeProps
+  extends React.HTMLAttributes<HTMLSpanElement>,
+    VariantProps<typeof badgeVariants> {
+  icon?: React.ReactNode
+}
+
+export function Badge({ variant, size, icon, children, className, ...props }: BadgeProps) {
+  return (
+    <span className={cn(badgeVariants({ variant, size }), className)} {...props}>
+      {icon && <span className="shrink-0 [&_svg]:size-3" aria-hidden="true">{icon}</span>}
+      {children}
+    </span>
+  )
+}
+
+/**
+ * TrendBadge — convenience wrapper that picks variant from sign of the value.
+ *
+ * Usage:
+ *   <TrendBadge value={11.8} />   → green "+11.8%"
+ *   <TrendBadge value={-5.6} />   → red "−5.6%"
+ *   <TrendBadge value={0} />      → neutral "0.0%"
+ */
+export interface TrendBadgeProps extends Omit<BadgeProps, "variant" | "children"> {
+  value: number
+  /** Number of decimal places (default: 1) */
+  decimals?: number
+  /** Show arrow icon (default: true) */
+  showArrow?: boolean
+}
+
+export function TrendBadge({ value, decimals = 1, showArrow = true, ...props }: TrendBadgeProps) {
+  const variant: BadgeProps["variant"] =
+    value > 0 ? "success" : value < 0 ? "error" : "neutral"
+
+  const formatted = `${value > 0 ? "+" : ""}${value.toFixed(decimals)}%`
+
+  const arrow = showArrow ? (
+    value > 0 ? <ArrowUpIcon /> :
+    value < 0 ? <ArrowDownIcon /> :
+    null
+  ) : null
+
+  return (
+    <Badge variant={variant} icon={arrow} {...props}>
+      {formatted}
+    </Badge>
+  )
+}
+
+// ── icons ─────────────────────────────────────────────────────────────────────
+function ArrowUpIcon() {
+  return (
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="2,7 5,3 8,7" />
+    </svg>
+  )
+}
+function ArrowDownIcon() {
+  return (
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="2,3 5,7 8,3" />
+    </svg>
+  )
+}
