@@ -2,18 +2,18 @@ import * as React from "react"
 import { cn } from "./utils"
 
 /**
- * Switcher — Qu Notify segmented control (iOS-style).
+ * Switcher — Qu Notify segmented control (L2 — inline data filter).
  *
  * Visual spec:
- *   Container: gray-100 (#DEDEDE) bg, 8px corner radius, 3px padding
- *   Selected segment: black fill, white text, 6px corner radius
- *   Unselected segment: transparent, secondary text (gray)
+ *   Container: gray-100 (#DEDEDE) bg, full-radius pill, 3px padding
+ *   Selected segment: black fill, white text, full-radius pill
+ *   Unselected segment: transparent, primary text (black)
  *   Font: Inter Medium 14px
  *
  * Differs from TabBar:
- *   - TabBar: full-radius pill, used for primary page-level navigation
- *   - Switcher: square-ish corners (8px), used for inline data filters
- *     (e.g. Day / Week / Month, Net / Gross, All / Open / Closed)
+ *   - TabBar: standalone pill tabs, no outer container — primary page navigation
+ *   - Switcher: outer pill container holding inner pill segments — inline
+ *     data filters (e.g. Day / Week / Month, Net / Gross, All / Open / Closed)
  *
  * Usage (uncontrolled):
  *   <Switcher segments={["Day", "Week", "Month"]} defaultValue="Week" />
@@ -81,7 +81,7 @@ export function Switcher({
     <div
       role="group"
       className={cn(
-        "inline-flex items-center gap-0.5 rounded-[8px] p-[3px]",
+        "inline-flex items-center gap-0.5 rounded-full p-[3px]",
         "bg-[var(--color-inactive,#DEDEDE)]",
         stretch && "w-full",
         className,
@@ -101,7 +101,7 @@ export function Switcher({
             aria-checked={isSelected}
             onClick={() => handleSelect(val)}
             className={cn(
-              "inline-flex items-center justify-center gap-1.5 rounded-[6px]",
+              "inline-flex items-center justify-center gap-1.5 rounded-full",
               "px-4 py-[7px] cursor-pointer select-none",
               "font-['Inter'] text-[14px] font-medium leading-tight",
               "outline-none transition-colors duration-[120ms]",
@@ -109,7 +109,7 @@ export function Switcher({
               stretch && "flex-1",
               isSelected
                 ? "bg-[var(--color-foreground,#000)] text-white"
-                : "bg-transparent text-[var(--color-text-secondary,#6B7280)] hover:text-[var(--color-text-primary,#000)]",
+                : "bg-transparent text-[var(--color-text-primary,#000)] hover:bg-black/5",
             )}
           >
             {icon && <span className="shrink-0 [&_svg]:size-[14px]">{icon}</span>}

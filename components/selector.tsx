@@ -26,7 +26,7 @@ import { cn } from "./utils"
 
 const selectorVariants = cva(
   [
-    "inline-flex items-center gap-1.5 rounded-full select-none cursor-pointer",
+    "inline-flex items-center gap-1.5 rounded-xl select-none cursor-pointer",
     "py-2 pl-3.5 pr-2.5",
     "font-['Red_Hat_Text'] text-[14px] font-medium leading-tight",
     "border-[1.5px] transition-colors duration-[120ms]",
