@@ -74,8 +74,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             "flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-[6px]",
             "border-[2px] transition-colors duration-[120ms]",
             (showCheck || showDash)
-              ? "border-transparent bg-[var(--color-secondary,#339FB8)] text-[var(--color-foreground,#000)]"
-              : "border-[var(--color-secondary,#339FB8)] bg-transparent",
+              ? "border-transparent bg-[var(--color-primary,#40CCF2)] text-[var(--color-foreground,#000)]"
+              : "border-[var(--color-primary,#40CCF2)] bg-transparent",
           )}
         >
           {showCheck && <Check size={12} />}

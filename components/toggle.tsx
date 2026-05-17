@@ -84,10 +84,10 @@ export const Toggle = React.forwardRef<HTMLButtonElement, ToggleProps>(
           // track
           "relative inline-flex h-[19px] w-[45px] shrink-0 cursor-pointer rounded-full",
           "border-0 outline-none transition-colors duration-[180ms] ease-[cubic-bezier(0.2,0,0,1)]",
-          "focus-visible:ring-2 focus-visible:ring-[var(--color-secondary,#339FB8)] focus-visible:ring-offset-2",
+          "focus-visible:ring-2 focus-visible:ring-[var(--color-primary,#40CCF2)] focus-visible:ring-offset-2",
           "disabled:cursor-not-allowed",
           currentOn
-            ? "bg-[var(--color-secondary,#339FB8)]"
+            ? "bg-[var(--color-primary,#40CCF2)]"
             : "bg-[var(--color-inactive,#DEDEDE)]",
         )}
       >
