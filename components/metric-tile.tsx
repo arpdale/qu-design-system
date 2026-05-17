@@ -116,11 +116,15 @@ export function MetricTile({
         >
           {!loading && label}
         </span>
-        {icon && !loading && (
+        {!loading && (icon ? (
           <span className="shrink-0 text-[var(--color-text-tertiary,#6B7280)] [&_svg]:size-4" aria-hidden="true">
             {icon}
           </span>
-        )}
+        ) : onClick ? (
+          <span className="shrink-0 text-[var(--color-text-tertiary,#6B7280)] [&_svg]:size-3.5" aria-hidden="true">
+            <ChevronRightIcon />
+          </span>
+        ) : null)}
       </div>
 
       {/* Value */}
@@ -135,15 +139,16 @@ export function MetricTile({
         {!loading && value}
       </span>
 
-      {/* Trend + sub-label row */}
+      {/* Metadata row — prior-period value first, then trend. Both gray-toned so
+          the headline value above stays the hero. */}
       {(trend !== undefined || trendLabel) && !loading && (
         <div className="flex items-center gap-1.5">
-          {trend !== undefined && <TrendBadge value={trend} size="sm" />}
           {trendLabel && (
-            <span className="font-['Inter'] text-[11px] text-[var(--color-text-tertiary,#6B7280)]">
+            <span className="font-['Inter'] text-[12px] text-[var(--color-text-tertiary,#6B7280)]">
               {trendLabel}
             </span>
           )}
+          {trend !== undefined && <TrendBadge value={trend} />}
         </div>
       )}
       {loading && trend !== undefined && (
@@ -177,5 +182,13 @@ export function MetricTileGrid({ cols = 2, children, className }: MetricTileGrid
     <div className={cn("grid gap-3", colClass, className)}>
       {children}
     </div>
+  )
+}
+
+function ChevronRightIcon() {
+  return (
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <polyline points="5,3 9,7 5,11" />
+    </svg>
   )
 }
