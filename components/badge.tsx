@@ -102,8 +102,8 @@ export function TrendBadge({ value, decimals = 1, showArrow = true, className, .
     <span
       className={cn(
         "inline-flex items-center gap-1 whitespace-nowrap select-none",
-        "font-['Inter'] text-[12px] font-medium leading-tight",
-        "[&_svg]:size-3",
+        "font-['Inter'] text-[13px] font-medium leading-tight",
+        "[&_svg]:size-3.5",
         colorClass,
         className,
       )}
