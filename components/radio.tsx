@@ -60,7 +60,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
           className={cn(
             "flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full",
             "border-[2px] bg-transparent transition-colors duration-[120ms]",
-            "border-[var(--color-secondary,#339FB8)]",
+            "border-[var(--color-primary,#40CCF2)]",
           )}
         >
           {currentChecked && (
