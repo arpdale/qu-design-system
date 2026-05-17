@@ -63,14 +63,19 @@ export function Badge({ variant, size, icon, children, className, ...props }: Ba
 }
 
 /**
- * TrendBadge — convenience wrapper that picks variant from sign of the value.
+ * TrendBadge — inline trend indicator. Bare colored text + arrow, no pill bg.
+ *
+ * Used inside MetricTile and anywhere a percent delta needs to appear next to
+ * a primary value. The bare style keeps the trend visually subordinate to the
+ * value above it (the headline number is the hero; the trend is supporting
+ * commentary). For a pill-shaped status label, use <Badge> directly.
  *
  * Usage:
- *   <TrendBadge value={11.8} />   → green "+11.8%"
- *   <TrendBadge value={-5.6} />   → red "−5.6%"
+ *   <TrendBadge value={11.8} />   → green "↗ +11.8%"
+ *   <TrendBadge value={-5.6} />   → red "↘ −5.6%"
  *   <TrendBadge value={0} />      → neutral "0.0%"
  */
-export interface TrendBadgeProps extends Omit<BadgeProps, "variant" | "children"> {
+export interface TrendBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   value: number
   /** Number of decimal places (default: 1) */
   decimals?: number
@@ -78,9 +83,11 @@ export interface TrendBadgeProps extends Omit<BadgeProps, "variant" | "children"
   showArrow?: boolean
 }
 
-export function TrendBadge({ value, decimals = 1, showArrow = true, ...props }: TrendBadgeProps) {
-  const variant: BadgeProps["variant"] =
-    value > 0 ? "success" : value < 0 ? "error" : "neutral"
+export function TrendBadge({ value, decimals = 1, showArrow = true, className, ...props }: TrendBadgeProps) {
+  const colorClass =
+    value > 0 ? "text-[var(--color-success,#16A34A)]" :
+    value < 0 ? "text-[var(--color-destructive,#EF2149)]" :
+    "text-[var(--color-text-tertiary,#6B7280)]"
 
   const formatted = `${value > 0 ? "+" : ""}${value.toFixed(decimals)}%`
 
@@ -91,9 +98,19 @@ export function TrendBadge({ value, decimals = 1, showArrow = true, ...props }: 
   ) : null
 
   return (
-    <Badge variant={variant} icon={arrow} {...props}>
+    <span
+      className={cn(
+        "inline-flex items-center gap-1 whitespace-nowrap select-none",
+        "font-['Inter'] text-[12px] font-medium leading-tight",
+        "[&_svg]:size-3",
+        colorClass,
+        className,
+      )}
+      {...props}
+    >
+      {arrow}
       {formatted}
-    </Badge>
+    </span>
   )
 }
 
