@@ -2,13 +2,17 @@ import * as React from "react"
 import { cn } from "./utils"
 
 /**
- * TabBar — Qu Notify segmented tab selector.
+ * TabBar — Qu Notify top-level tab selector (L1).
  *
  * Visual spec:
- *   Container: gray-100 (#DEDEDE) pill, 4px padding all sides, full-radius
- *   Selected tab: black fill, white text, full-radius pill
- *   Unselected tab: transparent, primary text
- *   Font: Inter Medium 14px
+ *   Layout: standalone pills sitting in a row with gaps (no outer container).
+ *   Selected tab:   black fill, white text, full-radius pill.
+ *   Unselected tab: gray-100 fill, primary text, full-radius pill.
+ *   Font: Inter Medium 14px.
+ *
+ * Differs from Switcher: TabBar is for primary page-level navigation where
+ * each tab reads as its own standalone affordance. Switcher is for inline
+ * filters where the segments share an outer track.
  *
  * Usage (uncontrolled):
  *   <TabBar tabs={["Sales", "Labor", "Store"]} defaultValue="Sales" />
@@ -57,8 +61,7 @@ export function TabBar({
       role="tablist"
       aria-label="Tabs"
       className={cn(
-        "inline-flex items-center gap-1 rounded-full p-1",
-        "bg-[var(--color-inactive,#DEDEDE)]",
+        "inline-flex items-center gap-2",
         stretch && "w-full",
         className,
       )}
@@ -80,7 +83,7 @@ export function TabBar({
               stretch && "flex-1 text-center",
               isSelected
                 ? "bg-[var(--color-foreground,#000)] text-white"
-                : "bg-transparent text-[var(--color-text-primary,#000)] hover:bg-black/5",
+                : "bg-[var(--color-inactive,#DEDEDE)] text-[var(--color-text-primary,#000)] hover:brightness-95",
             )}
           >
             {tab}
