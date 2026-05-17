@@ -10,6 +10,19 @@ node_modules/
 # Screenshots (large PNGs — not needed in npm bundle)
 screenshots/
 
+# Storybook (dev-only inventory surface — never ship to npm)
+.storybook/
+storybook-static/
+postcss.config.cjs
+vitest.config.ts
+vitest.shims.d.ts
+*.stories.tsx
+*.stories.ts
+*.stories.mdx
+
 # Git
 .gitignore
 .git/
+
+# Debug
+debug-*.log
