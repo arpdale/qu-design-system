@@ -1,0 +1,9 @@
+import * as React from 'react'
+import type { IconProps } from './types'
+
+export function OpenLock({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M16 22.6667C16.7363 22.6667 17.3333 22.0697 17.3333 21.3333C17.3333 20.597 16.7363 20 16 20C15.2636 20 14.6666 20.597 14.6666 21.3333C14.6666 22.0697 15.2636 22.6667 16 22.6667Z" stroke="currentColor" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/> <path d="M25.3333 13.3333H6.66667C5.19391 13.3333 4 14.5272 4 16V26.6666C4 28.1394 5.19391 29.3333 6.66667 29.3333H25.3333C26.8061 29.3333 28 28.1394 28 26.6666V16C28 14.5272 26.8061 13.3333 25.3333 13.3333Z" stroke="currentColor" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/> <path d="M9.33337 13.3333V9.33331C9.33344 7.8658 9.81771 6.43932 10.7111 5.27508C11.6045 4.11085 12.8571 3.27392 14.2746 2.8941C15.6921 2.51428 17.1953 2.61278 18.5511 3.17433C19.9069 3.73589 21.0396 4.72911 21.7734 5.99997" stroke="currentColor" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/></svg>
+  )
+}
+OpenLock.displayName = 'OpenLock'

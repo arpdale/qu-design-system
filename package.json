@@ -29,6 +29,11 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.mjs",
+      "require": "./dist/icons/index.js"
+    },
     "./tokens": "./tokens.json",
     "./tailwind": "./tailwind.config.js",
     "./tokens.css": "./tokens.css",

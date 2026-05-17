@@ -1,0 +1,9 @@
+import * as React from 'react'
+import type { IconProps } from './types'
+
+export function HelpCircle({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M16 29.3334C23.3638 29.3334 29.3333 23.3638 29.3333 16C29.3333 8.63622 23.3638 2.66669 16 2.66669C8.63616 2.66669 2.66663 8.63622 2.66663 16C2.66663 23.3638 8.63616 29.3334 16 29.3334Z" stroke="currentColor" strokeWidth="2.66667" strokeLinecap="round" strokeLinejoin="round"/> <path d="M12.12 12C12.4335 11.1089 13.0522 10.3575 13.8667 9.87887C14.6811 9.40024 15.6385 9.22528 16.5696 9.38497C17.5007 9.54468 18.3451 10.0287 18.9535 10.7514C19.5617 11.4741 19.8948 12.3887 19.8933 13.3334C19.8933 16 15.8933 17.3334 15.8933 17.3334" stroke="currentColor" strokeWidth="2.66667" strokeLinecap="round" strokeLinejoin="round"/> <path d="M16 22.6667H16.0133" stroke="currentColor" strokeWidth="2.66667" strokeLinecap="round" strokeLinejoin="round"/></svg>
+  )
+}
+HelpCircle.displayName = 'HelpCircle'

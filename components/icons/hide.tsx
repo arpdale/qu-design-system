@@ -1,0 +1,9 @@
+import * as React from 'react'
+import type { IconProps } from './types'
+
+export function Hide({ size = 24, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M14.3107 6.768C17.4165 6.39787 20.5581 7.05442 23.2558 8.6374C25.9535 10.2204 28.059 12.6428 29.2507 15.5347C29.3618 15.834 29.3618 16.1633 29.2507 16.4627C28.7607 17.6507 28.1131 18.7673 27.3253 19.7827" stroke="currentColor" strokeWidth="2.66667" strokeLinecap="round" strokeLinejoin="round"/> <path d="M18.7787 18.8773C18.0243 19.606 17.0139 20.0092 15.9651 20C14.9163 19.9909 13.9131 19.5703 13.1715 18.8286C12.4298 18.087 12.0091 17.0837 12 16.0349C11.9909 14.9862 12.3941 13.9758 13.1227 13.2213" stroke="currentColor" strokeWidth="2.66667" strokeLinecap="round" strokeLinejoin="round"/> <path d="M23.3054 23.332C21.5367 24.3797 19.5633 25.0347 17.5192 25.2525C15.475 25.4704 13.408 25.246 11.4582 24.5945C9.50844 23.9431 7.72161 22.8799 6.21897 21.477C4.71633 20.0742 3.53303 18.3645 2.74936 16.464C2.63824 16.1647 2.63824 15.8354 2.74936 15.536C3.93153 12.6692 6.01159 10.263 8.67736 8.67868" stroke="currentColor" strokeWidth="2.66667" strokeLinecap="round" strokeLinejoin="round"/> <path d="M2.66663 2.66666L29.3333 29.3333" stroke="currentColor" strokeWidth="2.66667" strokeLinecap="round" strokeLinejoin="round"/></svg>
+  )
+}
+Hide.displayName = 'Hide'
