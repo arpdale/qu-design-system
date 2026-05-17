@@ -59,14 +59,12 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
           aria-hidden="true"
           className={cn(
             "flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full",
-            "border-[1.5px] transition-colors duration-[120ms]",
-            currentChecked
-              ? "border-transparent bg-[var(--color-primary,#40CCF2)]"
-              : "border-[var(--color-secondary-border,#339FB8)] bg-transparent",
+            "border-[2px] bg-transparent transition-colors duration-[120ms]",
+            "border-[var(--color-secondary,#339FB8)]",
           )}
         >
           {currentChecked && (
-            <span className="h-[6px] w-[6px] rounded-full bg-white" />
+            <span className="h-[8px] w-[8px] rounded-full bg-[var(--color-foreground,#000)]" />
           )}
         </span>
 

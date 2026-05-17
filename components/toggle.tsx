@@ -82,12 +82,12 @@ export const Toggle = React.forwardRef<HTMLButtonElement, ToggleProps>(
         onKeyDown={handleKeyDown}
         className={cn(
           // track
-          "relative inline-flex h-[24px] w-[44px] shrink-0 cursor-pointer rounded-full",
+          "relative inline-flex h-[19px] w-[45px] shrink-0 cursor-pointer rounded-full",
           "border-0 outline-none transition-colors duration-[180ms] ease-[cubic-bezier(0.2,0,0,1)]",
-          "focus-visible:ring-2 focus-visible:ring-[var(--color-ring,#40CCF2)] focus-visible:ring-offset-2",
+          "focus-visible:ring-2 focus-visible:ring-[var(--color-secondary,#339FB8)] focus-visible:ring-offset-2",
           "disabled:cursor-not-allowed",
           currentOn
-            ? "bg-[var(--color-primary,#40CCF2)]"
+            ? "bg-[var(--color-secondary,#339FB8)]"
             : "bg-[var(--color-inactive,#DEDEDE)]",
         )}
       >
@@ -95,9 +95,9 @@ export const Toggle = React.forwardRef<HTMLButtonElement, ToggleProps>(
         <span
           aria-hidden="true"
           className={cn(
-            "absolute top-[2px] h-[20px] w-[20px] rounded-full bg-white shadow-sm",
+            "absolute top-[2px] h-[15px] w-[24px] rounded-full bg-white shadow-sm",
             "transition-transform duration-[180ms] ease-[cubic-bezier(0.2,0,0,1)]",
-            currentOn ? "translate-x-[22px]" : "translate-x-[2px]",
+            currentOn ? "translate-x-[19px]" : "translate-x-[2px]",
           )}
         />
       </button>
