@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "./utils"
+import { Search, View, Hide, XCircle, Info } from "./icons"
 
 /**
  * Input — pill-shaped form field matching the Qu Notify Input component set.
@@ -146,7 +147,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
           {/* Left icon — search only */}
           {type === "search" && (
             <span className={cn("shrink-0", iconColor)} aria-hidden="true">
-              <SearchIcon />
+              <Search size={16} />
             </span>
           )}
 
@@ -184,7 +185,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
               className={cn("shrink-0 cursor-pointer", iconColor)}
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
-              {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+              {showPassword ? <Hide size={16} /> : <View size={16} />}
             </button>
           )}
           {!rightSlot && type === "search" && hasValue && !disabled && (
@@ -195,12 +196,12 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
               className={cn("shrink-0 cursor-pointer", iconColor)}
               aria-label="Clear search"
             >
-              <XCircleIcon />
+              <XCircle size={16} />
             </button>
           )}
           {!rightSlot && state === "error" && type !== "password" && (
             <span className={cn("shrink-0", iconColor)} aria-hidden="true">
-              <InfoCircleIcon />
+              <Info size={16} />
             </span>
           )}
         </div>
@@ -223,53 +224,3 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
   },
 )
 InputField.displayName = "InputField"
-
-// ── inline icon components (16×16 stroke, matches Figma set) ─────────────────
-
-function SearchIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="7" cy="7" r="4.5" />
-      <line x1="10.5" y1="10.5" x2="14" y2="14" />
-    </svg>
-  )
-}
-
-function EyeIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5Z" />
-      <circle cx="8" cy="8" r="2" />
-    </svg>
-  )
-}
-
-function EyeOffIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M2 2l12 12M6.5 6.5A2 2 0 0 0 9.5 9.5" />
-      <path d="M4.2 4.2C2.6 5.2 1 8 1 8s2.5 5 7 5c1.4 0 2.7-.4 3.8-1" />
-      <path d="M9.8 3.2C12.2 4.2 15 8 15 8s-.7 1.4-1.8 2.6" />
-    </svg>
-  )
-}
-
-function XCircleIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="8" cy="8" r="6.5" />
-      <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
-      <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
-    </svg>
-  )
-}
-
-function InfoCircleIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="8" cy="8" r="6.5" />
-      <line x1="8" y1="7" x2="8" y2="11" />
-      <circle cx="8" cy="5" r="0.5" fill="currentColor" stroke="none" />
-    </svg>
-  )
-}

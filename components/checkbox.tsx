@@ -1,5 +1,6 @@
 import * as React from "react"
 import { cn } from "./utils"
+import { Check, Minus } from "./icons"
 
 /**
  * Checkbox — Qu Notify form control.
@@ -77,8 +78,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
               : "border-[var(--color-secondary,#339FB8)] bg-transparent",
           )}
         >
-          {showCheck && <CheckIcon />}
-          {showDash  && <DashIcon />}
+          {showCheck && <Check size={12} />}
+          {showDash  && <Minus size={12} />}
         </span>
 
         {/* Label + helper */}
@@ -102,20 +103,3 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 )
 Checkbox.displayName = "Checkbox"
 
-// ── icons ────────────────────────────────────────────────────────────────────
-
-function CheckIcon() {
-  return (
-    <svg width="11" height="8" viewBox="0 0 11 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="1,4 4,7 10,1" />
-    </svg>
-  )
-}
-
-function DashIcon() {
-  return (
-    <svg width="10" height="2" viewBox="0 0 10 2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-      <line x1="1" y1="1" x2="9" y2="1" />
-    </svg>
-  )
-}
