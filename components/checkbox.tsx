@@ -70,11 +70,11 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         <span
           aria-hidden="true"
           className={cn(
-            "flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-[4px]",
-            "border-[1.5px] transition-colors duration-[120ms]",
+            "flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-[6px]",
+            "border-[2px] transition-colors duration-[120ms]",
             (showCheck || showDash)
-              ? "border-transparent bg-[var(--color-primary,#40CCF2)]"
-              : "border-[var(--color-secondary-border,#339FB8)] bg-transparent",
+              ? "border-transparent bg-[var(--color-secondary,#339FB8)] text-[var(--color-foreground,#000)]"
+              : "border-[var(--color-secondary,#339FB8)] bg-transparent",
           )}
         >
           {showCheck && <CheckIcon />}
@@ -106,7 +106,7 @@ Checkbox.displayName = "Checkbox"
 
 function CheckIcon() {
   return (
-    <svg width="11" height="8" viewBox="0 0 11 8" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="11" height="8" viewBox="0 0 11 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="1,4 4,7 10,1" />
     </svg>
   )
@@ -114,7 +114,7 @@ function CheckIcon() {
 
 function DashIcon() {
   return (
-    <svg width="10" height="2" viewBox="0 0 10 2" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+    <svg width="10" height="2" viewBox="0 0 10 2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
       <line x1="1" y1="1" x2="9" y2="1" />
     </svg>
   )

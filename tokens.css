@@ -169,6 +169,7 @@
   --color-primary-pressed:      var(--p-brand-stable-blue);
 
   /* Secondary button */
+  --color-secondary:            var(--p-brand-teal);  /* Controls fill: checkbox/radio/toggle. Flip target to swap all at once. */
   --color-secondary-border:     var(--p-brand-teal);
   --color-secondary-foreground: var(--p-brand-teal);
   --color-secondary-hover:      rgba(51, 159, 184, 0.08);
