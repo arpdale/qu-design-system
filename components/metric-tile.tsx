@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cn } from "./utils"
 import { TrendBadge } from "./badge"
+import { ChevronRight } from "./icons"
 
 /**
  * MetricTile — the core data display unit of the Qu Notify dashboard.
@@ -121,8 +122,8 @@ export function MetricTile({
             {icon}
           </span>
         ) : onClick ? (
-          <span className="shrink-0 text-[var(--color-text-tertiary,#6B7280)] [&_svg]:size-3.5" aria-hidden="true">
-            <ChevronRightIcon />
+          <span className="shrink-0 text-[var(--color-text-tertiary,#6B7280)]" aria-hidden="true">
+            <ChevronRight size={14} />
           </span>
         ) : null)}
       </div>
@@ -185,10 +186,3 @@ export function MetricTileGrid({ cols = 2, children, className }: MetricTileGrid
   )
 }
 
-function ChevronRightIcon() {
-  return (
-    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polyline points="5,3 9,7 5,11" />
-    </svg>
-  )
-}

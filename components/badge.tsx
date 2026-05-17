@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "./utils"
+import { ArrowUp2, ArrowDown2 } from "./icons"
 
 /**
  * Badge — Qu Notify status/trend pill label.
@@ -92,8 +93,8 @@ export function TrendBadge({ value, decimals = 1, showArrow = true, className, .
   const formatted = `${value > 0 ? "+" : ""}${value.toFixed(decimals)}%`
 
   const arrow = showArrow ? (
-    value > 0 ? <ArrowUpIcon /> :
-    value < 0 ? <ArrowDownIcon /> :
+    value > 0 ? <ArrowUp2 /> :
+    value < 0 ? <ArrowDown2 /> :
     null
   ) : null
 
@@ -114,18 +115,3 @@ export function TrendBadge({ value, decimals = 1, showArrow = true, className, .
   )
 }
 
-// ── icons ─────────────────────────────────────────────────────────────────────
-function ArrowUpIcon() {
-  return (
-    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="2,7 5,3 8,7" />
-    </svg>
-  )
-}
-function ArrowDownIcon() {
-  return (
-    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="2,3 5,7 8,3" />
-    </svg>
-  )
-}

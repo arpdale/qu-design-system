@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "./utils"
+import { ChevronDown } from "./icons"
 
 /**
  * Selector — pill-shaped dropdown trigger. Qu Notify filter/store-picker control.
@@ -102,7 +103,8 @@ export const Selector = React.forwardRef<HTMLButtonElement, SelectorProps>(
       >
         {icon && <span className="shrink-0 [&_svg]:size-4">{icon}</span>}
         <span>{label}</span>
-        <ChevronDownIcon
+        <ChevronDown
+          size={12}
           className={cn(
             "shrink-0 transition-transform duration-[120ms]",
             open && "rotate-180",
@@ -127,21 +129,3 @@ export function SelectorGroup({ children, className }: SelectorGroupProps) {
   )
 }
 
-// ── icon ─────────────────────────────────────────────────────────────────────
-function ChevronDownIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-    >
-      <polyline points="2,4 6,8 10,4" />
-    </svg>
-  )
-}
