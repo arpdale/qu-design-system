@@ -76,9 +76,9 @@ export function MetricTile({
   as: Tag = "div",
 }: MetricTileProps) {
   const valueSize = {
-    sm: "text-[18px]",
-    md: "text-[24px]",
-    lg: "text-[30px]",
+    sm: "text-[22px]",
+    md: "text-[28px]",
+    lg: "text-[34px]",
   }[size]
 
   const padding = {
@@ -110,7 +110,7 @@ export function MetricTile({
       <div className="flex items-center justify-between gap-2">
         <span
           className={cn(
-            "font-['Inter'] text-[12px] font-normal leading-tight",
+            "font-['Inter'] text-[14px] font-normal leading-tight",
             "text-[var(--color-text-tertiary,#6B7280)]",
             loading && "h-3 w-24 rounded bg-gray-200",
           )}
@@ -140,16 +140,16 @@ export function MetricTile({
         {!loading && value}
       </span>
 
-      {/* Metadata row — prior-period value first, then trend. Both gray-toned so
-          the headline value above stays the hero. */}
+      {/* Metadata row — prior-period value (left, gray) + trend (right, colored).
+          The trend right-aligns under the chevron above. */}
       {(trend !== undefined || trendLabel) && !loading && (
-        <div className="flex items-center gap-1.5">
-          {trendLabel && (
-            <span className="font-['Inter'] text-[12px] text-[var(--color-text-tertiary,#6B7280)]">
+        <div className="flex items-center justify-between gap-2">
+          {trendLabel ? (
+            <span className="font-['Inter'] text-[13px] text-[var(--color-text-tertiary,#6B7280)]">
               {trendLabel}
             </span>
-          )}
-          {trend !== undefined && <TrendBadge value={trend} />}
+          ) : <span />}
+          {trend !== undefined ? <TrendBadge value={trend} /> : <span />}
         </div>
       )}
       {loading && trend !== undefined && (
