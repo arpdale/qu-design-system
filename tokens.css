@@ -444,7 +444,7 @@
    For Tailwind v3: use tailwind.config.js instead.
 ───────────────────────────────────────────────────────────────────────────── */
 
-@theme {
+@theme inline {
   /* Colors */
   --color-background:           var(--color-bg-card);
   --color-foreground:           var(--color-text-primary);
@@ -455,7 +455,7 @@
 
   --color-primary:              var(--color-primary);
   --color-primary-foreground:   var(--color-primary-foreground);
-  --color-secondary:            var(--color-secondary-foreground);
+  --color-secondary:            var(--color-secondary);
   --color-secondary-foreground: var(--color-secondary-foreground);
 
   --color-destructive:          var(--color-destructive);
@@ -513,8 +513,13 @@
  *   @font-face above loads from ./fonts/ (relative to this CSS file).
  *   Update the path if your bundler resolves assets differently.
  *
- * TAILWIND v4 @theme
- *   The @theme block above is for Tailwind v4's CSS-first config.
+ * TAILWIND v4 @theme inline
+ *   The @theme block above uses the `inline` modifier so utility classes
+ *   emit `var(--color-primary)` directly instead of generating a new
+ *   --color-primary variable that self-references. Without `inline`, the
+ *   v4 compile output overrides the :root declarations above and the
+ *   var() chain becomes cyclic, falling back to browser defaults (serif
+ *   fonts, unset colors, etc.). Keep `inline`.
  *   For Tailwind v3, import tailwind.config.js as a preset instead.
  *   Both can coexist — @theme is ignored by v3 PostCSS pipelines.
  */
