@@ -20,7 +20,7 @@ import { ArrowUp2, ArrowDown2 } from "./icons"
 
 const badgeVariants = cva(
   [
-    "inline-flex items-center gap-1 rounded-full font-['Inter'] font-medium whitespace-nowrap",
+    "inline-flex items-center gap-1 rounded-full font-sans font-medium whitespace-nowrap",
     "select-none leading-tight",
   ],
   {
@@ -102,7 +102,7 @@ export function TrendBadge({ value, decimals = 1, showArrow = true, className, .
     <span
       className={cn(
         "inline-flex items-center gap-1 whitespace-nowrap select-none",
-        "font-['Inter'] text-[13px] font-medium leading-tight",
+        "font-sans text-[13px] font-medium leading-tight",
         "[&_svg]:size-3.5",
         colorClass,
         className,

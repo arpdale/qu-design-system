@@ -76,11 +76,16 @@ module.exports = {
       },
 
       // ── Typography ──────────────────────────────────────────────────────────
+      // Canonical Tailwind-style names: sans / ui / display / system.
+      // primary / secondary kept as aliases for back-compat with consumers
+      // still using `font-primary` / `font-secondary`.
       fontFamily: {
-        primary:   ['Inter', 'system-ui', 'sans-serif'],
-        secondary: ['Red Hat Text', 'Red Hat Display', 'system-ui', 'sans-serif'],
+        sans:      ['Inter', 'system-ui', 'sans-serif'],
+        ui:        ['Red Hat Text', 'Red Hat Display', 'system-ui', 'sans-serif'],
         display:   ['Zilla Slab', 'Georgia', 'serif'],
         system:    ['-apple-system', 'SF Pro', 'system-ui', 'sans-serif'],
+        primary:   ['Inter', 'system-ui', 'sans-serif'],
+        secondary: ['Red Hat Text', 'Red Hat Display', 'system-ui', 'sans-serif'],
       },
 
       fontSize: {

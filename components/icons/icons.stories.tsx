@@ -52,7 +52,7 @@ export const AllIcons: StoryObj<GalleryArgs> = {
     <div className="flex flex-col gap-6">
       {Object.entries(ICON_GROUPS).map(([group, names]) => (
         <section key={group} className="flex flex-col gap-3">
-          <h3 className="font-['Inter'] text-sm font-semibold tracking-wide uppercase text-neutral-gray-400">
+          <h3 className="font-sans text-sm font-semibold tracking-wide uppercase text-neutral-gray-400">
             {group} <span className="font-normal text-neutral-gray-200">({names.length})</span>
           </h3>
           <div className="flex flex-wrap gap-2">

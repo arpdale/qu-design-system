@@ -110,7 +110,7 @@ export function MetricTile({
       <div className="flex items-center justify-between gap-2">
         <span
           className={cn(
-            "font-['Inter'] text-[14px] font-normal leading-tight",
+            "font-sans text-[14px] font-normal leading-tight",
             "text-[var(--color-text-tertiary,#6B7280)]",
             loading && "h-3 w-24 rounded bg-gray-200",
           )}
@@ -131,7 +131,7 @@ export function MetricTile({
       {/* Value */}
       <span
         className={cn(
-          "font-['Inter'] font-semibold leading-tight tracking-tight",
+          "font-sans font-semibold leading-tight tracking-tight",
           valueSize,
           loading && "mt-1 h-7 w-28 rounded bg-gray-200",
         )}
@@ -145,7 +145,7 @@ export function MetricTile({
       {(trend !== undefined || trendLabel) && !loading && (
         <div className="flex items-center justify-between gap-2">
           {trendLabel ? (
-            <span className="font-['Inter'] text-[13px] text-[var(--color-text-tertiary,#6B7280)]">
+            <span className="font-sans text-[13px] text-[var(--color-text-tertiary,#6B7280)]">
               {trendLabel}
             </span>
           ) : <span />}

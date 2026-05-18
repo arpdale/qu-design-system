@@ -133,7 +133,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
 
         {/* Label row */}
         {label && (
-          <label className="flex items-center gap-0.5 font-['Red_Hat_Text'] text-[18px] font-medium leading-tight text-[var(--color-text-primary,#000)]">
+          <label className="flex items-center gap-0.5 font-ui text-[18px] font-medium leading-tight text-[var(--color-text-primary,#000)]">
             {label}
             {required && (
               <span className="text-[var(--color-brand-red,#EF2149)]" aria-hidden="true"> *</span>
@@ -165,7 +165,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
             onChange={handleChange}
             className={cn(
               "min-w-0 flex-1 bg-transparent outline-none",
-              "font-['Inter'] text-[16px] font-normal",
+              "font-sans text-[16px] font-normal",
               "text-[var(--color-input-text,#000)] placeholder:text-[var(--color-input-placeholder,#B1B1B1)]",
               "disabled:cursor-not-allowed",
             )}
@@ -210,7 +210,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
         {(errorMessage || helperText) && (
           <p
             className={cn(
-              "font-['Inter'] text-[12px] font-normal leading-tight px-1",
+              "font-sans text-[12px] font-normal leading-tight px-1",
               errorMessage
                 ? "text-[var(--color-input-text-error,#EF2149)]"
                 : "text-[var(--color-text-tertiary,#6B7280)]",

@@ -72,12 +72,12 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
         {(label || helperText) && (
           <span className="flex flex-col gap-0.5">
             {label && (
-              <span className="font-['Red_Hat_Text'] text-[14px] font-normal leading-tight text-[var(--color-text-primary,#000)]">
+              <span className="font-ui text-[14px] font-normal leading-tight text-[var(--color-text-primary,#000)]">
                 {label}
               </span>
             )}
             {helperText && (
-              <span className="font-['Inter'] text-[12px] text-[var(--color-text-tertiary,#6B7280)]">
+              <span className="font-sans text-[12px] text-[var(--color-text-tertiary,#6B7280)]">
                 {helperText}
               </span>
             )}
@@ -134,7 +134,7 @@ export function RadioGroup({
   return (
     <fieldset className={cn("border-none p-0 m-0", className)}>
       {label && (
-        <legend className="mb-2 font-['Red_Hat_Text'] text-[18px] font-medium text-[var(--color-text-primary,#000)]">
+        <legend className="mb-2 font-ui text-[18px] font-medium text-[var(--color-text-primary,#000)]">
           {label}
         </legend>
       )}
