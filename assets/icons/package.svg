@@ -1,6 +1,6 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M22 12.5333L10.0667 5.65334" stroke="black" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M28 21.3333V10.6667C27.9995 10.199 27.8761 9.73975 27.642 9.33488C27.408 8.93003 27.0716 8.59382 26.6667 8.36L17.3333 3.02667C16.928 2.79262 16.4681 2.6694 16 2.6694C15.5319 2.6694 15.072 2.79262 14.6667 3.02667L5.33333 8.36C4.92835 8.59382 4.59197 8.93003 4.35795 9.33488C4.12392 9.73975 4.00048 10.199 4 10.6667V21.3333C4.00048 21.8009 4.12392 22.2603 4.35795 22.6651C4.59197 23.07 4.92835 23.4061 5.33333 23.64L14.6667 28.9733C15.072 29.2073 15.5319 29.3307 16 29.3307C16.4681 29.3307 16.928 29.2073 17.3333 28.9733L26.6667 23.64C27.0716 23.4061 27.408 23.07 27.642 22.6651C27.8761 22.2603 27.9995 21.8009 28 21.3333Z" stroke="black" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M4.35999 9.28L16 16.0133L27.64 9.28" stroke="black" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M16 29.44V16" stroke="black" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.5 9.4L7.55 4.24" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 16V8C20.9996 7.6493 20.9071 7.3048 20.7315 7.0012C20.556 6.6975 20.3037 6.4454 20 6.27L13 2.27C12.696 2.0945 12.3511 2.0021 12 2.0021C11.6489 2.0021 11.304 2.0945 11 2.27L4 6.27C3.6963 6.4454 3.444 6.6975 3.2685 7.0012C3.0929 7.3048 3.0004 7.6493 3 8V16C3.0004 16.3507 3.0929 16.6952 3.2685 16.9988C3.444 17.3025 3.6963 17.5546 4 17.73L11 21.73C11.304 21.9055 11.6489 21.998 12 21.998C12.3511 21.998 12.696 21.9055 13 21.73L20 17.73C20.3037 17.5546 20.556 17.3025 20.7315 16.9988C20.9071 16.6952 20.9996 16.3507 21 16Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.27 6.96L12 12.01L20.73 6.96" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 22.08V12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
