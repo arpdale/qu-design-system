@@ -103,7 +103,7 @@ export function Switcher({
             className={cn(
               "inline-flex items-center justify-center gap-1.5 rounded-full",
               "px-4 py-[7px] cursor-pointer select-none",
-              "font-['Inter'] text-[14px] font-medium leading-tight",
+              "font-sans text-[14px] font-medium leading-tight",
               "outline-none transition-colors duration-[120ms]",
               "focus-visible:ring-2 focus-visible:ring-[var(--color-ring,#40CCF2)] focus-visible:ring-offset-1",
               stretch && "flex-1",

@@ -135,7 +135,7 @@ function NavItemButton({ item, isSelected, onClick }: NavItemButtonProps) {
             "absolute right-2 top-2 flex items-center justify-center",
             "rounded-full bg-[var(--color-destructive,#EF2149)] text-white",
             typeof item.badge === "number"
-              ? "h-4 min-w-4 px-1 font-['Inter'] text-[10px] font-semibold"
+              ? "h-4 min-w-4 px-1 font-sans text-[10px] font-semibold"
               : "h-2 w-2",
           )}
         >
@@ -151,7 +151,7 @@ function NavItemButton({ item, isSelected, onClick }: NavItemButtonProps) {
       {/* Label */}
       <span
         className={cn(
-          "font-['Inter'] text-[10px] leading-tight",
+          "font-sans text-[10px] leading-tight",
           isSelected ? "font-semibold" : "font-normal",
         )}
       >

@@ -115,11 +115,11 @@ export const Toggle = React.forwardRef<HTMLButtonElement, ToggleProps>(
           disabled && "cursor-not-allowed",
         )}
       >
-        <span className="font-['Red_Hat_Text'] text-[14px] font-normal leading-tight text-[var(--color-text-primary,#000)]">
+        <span className="font-ui text-[14px] font-normal leading-tight text-[var(--color-text-primary,#000)]">
           {label}
         </span>
         {helperText && (
-          <span className="font-['Inter'] text-[12px] text-[var(--color-text-tertiary,#6B7280)]">
+          <span className="font-sans text-[12px] text-[var(--color-text-tertiary,#6B7280)]">
             {helperText}
           </span>
         )}

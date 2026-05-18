@@ -29,7 +29,7 @@ const selectorVariants = cva(
   [
     "inline-flex items-center gap-1.5 rounded-xl select-none cursor-pointer",
     "py-2 pl-3.5 pr-2.5",
-    "font-['Red_Hat_Text'] text-[14px] font-medium leading-tight",
+    "font-ui text-[14px] font-medium leading-tight",
     "border-[1.5px] transition-colors duration-[120ms]",
     "outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ring,#40CCF2)] focus-visible:ring-offset-1",
     "disabled:pointer-events-none disabled:opacity-50",

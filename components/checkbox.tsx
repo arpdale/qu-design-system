@@ -86,12 +86,12 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         {(label || helperText) && (
           <span className="flex flex-col gap-0.5">
             {label && (
-              <span className="font-['Red_Hat_Text'] text-[14px] font-normal leading-tight text-[var(--color-text-primary,#000)]">
+              <span className="font-ui text-[14px] font-normal leading-tight text-[var(--color-text-primary,#000)]">
                 {label}
               </span>
             )}
             {helperText && (
-              <span className="font-['Inter'] text-[12px] text-[var(--color-text-tertiary,#6B7280)]">
+              <span className="font-sans text-[12px] text-[var(--color-text-tertiary,#6B7280)]">
                 {helperText}
               </span>
             )}
