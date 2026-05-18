@@ -33,3 +33,15 @@ export type { BadgeProps, TrendBadgeProps }             from "./badge"
 
 export { MetricTile, MetricTileGrid }                   from "./metric-tile"
 export type { MetricTileProps, MetricTileGridProps }    from "./metric-tile"
+
+export { SectionHeader }                                from "./section-header"
+export type { SectionHeaderProps }                      from "./section-header"
+
+export { StatCard }                                     from "./stat-card"
+export type { StatCardProps }                           from "./stat-card"
+
+export { StatusTile }                                   from "./status-tile"
+export type { StatusTileProps, StatusTileItem }         from "./status-tile"
+
+export { DrawerSection, DrawerItem, DrawerAction }      from "./drawer-section"
+export type { DrawerSectionProps, DrawerItemProps, DrawerActionProps } from "./drawer-section"
