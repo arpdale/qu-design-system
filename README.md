@@ -130,13 +130,20 @@ import SearchIcon from 'notify-ds/assets/icons/search.svg'
 | **Red Hat Text** | Secondary | Page headers, input labels, button labels, section titles |
 | **Zilla Slab** | Display | Splash screen, H2 display headings, pull quotes only |
 
-Google Fonts import:
+**Font loading is the consumer's responsibility.** `tokens.css` declares font *families* (`--font-primary`, `--font-display`, etc.) but does not load any font files — the canonical mechanism is a single HTML `<link>` to Google Fonts covering all four families:
+
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Red+Hat+Text:wght@400;500;600;700&family=Red+Hat+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Red+Hat+Text:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Red+Hat+Display:wght@400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+>
 ```
 
-Zilla Slab TTF files are in `fonts/` for local use.
+For meta-frameworks (TanStack Start, Next, Remix, etc.) put the equivalent `<link>` in the root route's `head()`. Don't try to `@import url('https://fonts.googleapis.com/...')` from your CSS — Tailwind v4 / Vite inline `tokens.css` and strip the `@import` statement silently, so fonts won't load.
+
+Zilla Slab TTF files ship at `dist/fonts/` for offline / self-hosting scenarios, but tokens.css does not reference them by default. If you need to self-host, add your own `@font-face` declarations in your project CSS pointing at copies in your `public/` directory.
 
 ### Shapes
 

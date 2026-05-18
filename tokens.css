@@ -22,63 +22,22 @@
 
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   1. FONT IMPORTS
-   Inter + Red Hat Text + Red Hat Display from Google Fonts.
-   Zilla Slab loaded locally from ./fonts/ (not fully on GFonts).
+   1. FONT LOADING — consumer responsibility
+   This file does NOT load any font files. Earlier versions of tokens.css
+   shipped an `@import url('https://fonts.googleapis.com/...')` and a set of
+   `@font-face` blocks for Zilla Slab, but both broke in Tailwind v4 / Vite
+   environments where tokens.css is inlined into the consumer's main
+   stylesheet:
+     - `@import` rules are only valid as the first statement of a stylesheet,
+       so the inliner stripped them silently.
+     - `@font-face { src: url('./fonts/...') }` paths resolved relative to the
+       compiled output, not the package, and 404'd.
+   The canonical pattern is to load all four families from Google Fonts via
+   a single HTML `<link>` tag. All four (Inter, Red Hat Text, Red Hat Display,
+   Zilla Slab) are on Google Fonts. See README "Typography" for the exact
+   markup. The package still ships Zilla Slab TTF files under `fonts/` for
+   offline / self-hosting scenarios, but they are not referenced by default.
 ───────────────────────────────────────────────────────────────────────────── */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Red+Hat+Text:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap');
-
-@font-face {
-  font-family: 'Zilla Slab';
-  src: url('./fonts/ZillaSlab-Light.ttf') format('truetype');
-  font-weight: 300; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Zilla Slab';
-  src: url('./fonts/ZillaSlab-LightItalic.ttf') format('truetype');
-  font-weight: 300; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: 'Zilla Slab';
-  src: url('./fonts/ZillaSlab-Regular.ttf') format('truetype');
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Zilla Slab';
-  src: url('./fonts/ZillaSlab-Italic.ttf') format('truetype');
-  font-weight: 400; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: 'Zilla Slab';
-  src: url('./fonts/ZillaSlab-Medium.ttf') format('truetype');
-  font-weight: 500; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Zilla Slab';
-  src: url('./fonts/ZillaSlab-MediumItalic.ttf') format('truetype');
-  font-weight: 500; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: 'Zilla Slab';
-  src: url('./fonts/ZillaSlab-SemiBold.ttf') format('truetype');
-  font-weight: 600; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Zilla Slab';
-  src: url('./fonts/ZillaSlab-SemiBoldItalic.ttf') format('truetype');
-  font-weight: 600; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: 'Zilla Slab';
-  src: url('./fonts/ZillaSlab-Bold.ttf') format('truetype');
-  font-weight: 700; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Zilla Slab';
-  src: url('./fonts/ZillaSlab-BoldItalic.ttf') format('truetype');
-  font-weight: 700; font-style: italic; font-display: swap;
-}
 
 
 /* ─────────────────────────────────────────────────────────────────────────────
