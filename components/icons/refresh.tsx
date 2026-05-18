@@ -3,7 +3,7 @@ import type { IconProps } from './types'
 
 export function Refresh({ size = 24, ...props }: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M28 16C28 12.8174 26.7357 9.76516 24.4853 7.51472C22.2348 5.26428 19.1826 4 16 4C12.6453 4.01262 9.42529 5.32163 7.01333 7.65333L4 10.6667" stroke="currentColor" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/> <path d="M4 4V10.6667H10.6667" stroke="currentColor" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/> <path d="M4 16C4 19.1826 5.26428 22.2348 7.51472 24.4853C9.76516 26.7357 12.8174 28 16 28C19.3547 27.9874 22.5747 26.6784 24.9867 24.3467L28 21.3333" stroke="currentColor" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/> <path d="M21.3334 21.3334H28V28" stroke="currentColor" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/></svg>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M21 12C21 9.613 20.0518 7.3239 18.364 5.636C16.6761 3.9482 14.387 3 12 3C9.484 3.0095 7.069 3.9912 5.26 5.74L3 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/> <path d="M3 3V8H8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/> <path d="M3 12C3 14.387 3.9482 16.6761 5.636 18.364C7.3239 20.0518 9.613 21 12 21C14.516 20.9905 16.931 20.0088 18.74 18.26L21 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/> <path d="M16.0001 16.0001H21V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
   )
 }
 Refresh.displayName = 'Refresh'
