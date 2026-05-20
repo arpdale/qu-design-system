@@ -4,6 +4,22 @@ Decision log — not just version history. Each entry captures *why* a decision 
 
 ---
 
+## 2026-05-20 — Dark mode tokens ported from Figma
+
+**Dark mode is now a real, shipped mode — no longer a known gap.**
+The Figma "Notify Design System" file already defined a complete Light/Dark pair on its Semantic variable collection (38 color variables, both modes populated). The code only ever exposed the Light values, so Figma and the package had drifted: the file advertised "2 modes" while `tokens.css` shipped one.
+
+This change ports the Dark mode values **1:1 from Figma** (Figma is the source of truth here, since the design side had done the Light→Dark mapping work):
+- `tokens.css` — added a `[data-theme="dark"], .dark` block redeclaring only the semantic aliases that differ from Light (surfaces → near-black, text → white, `nav-selected` inverts, borders/inactive → gray ramp). The `@theme` aliases (`--color-background`, `--color-foreground`) cascade automatically because they reference these vars.
+- `tokens.json` — added `$extensions.qu.modes.dark` documenting the dark primitive references for each differing semantic token.
+- `tailwind.config.js` — `darkMode: ['selector', '[data-theme="dark"]']` so consumers can use `dark:` utilities with either the class or the data-attribute strategy.
+
+**Why only the differing aliases are redeclared:** brand, accent, and status colors (cyan CTA, teal, reds, greens) are intentionally mode-stable — they read correctly on both surfaces. Redeclaring only what changes keeps the dark block auditable and prevents primitive duplication.
+
+**Known reconciliation gap (not addressed here):** Figma's Semantic collection (38 vars) is slimmer than the repo's semantic tier — it lacks the granular `input-*` aliases the code has (`input-bg-disabled`, `input-placeholder`, etc.), binding instead to generic equivalents (`color/border`, `color/background`). The values resolve identically; only the naming granularity differs.
+
+---
+
 ## v1.0.0 — Initial canonical release
 
 ### Token architecture
@@ -87,4 +103,3 @@ Inter and Red Hat Text are loaded from Google Fonts at runtime (`fonts.googleapi
 - **Chart components** — the line chart in Net Sales detail and the KI visualization are not included. Recommend Recharts or Victory Native for React Native, following the cyan/gray color scheme from screenshots.
 - **Toast component** — the red error toast (fixed bottom, full-width pill) is not yet a React component. Anatomy is documented in `screen-anatomy.md`.
 - **Data table component** — the tabular data in Net Sales and Store/Kitchen views is not componentized. Anatomy is documented in `screen-anatomy.md`.
-- **Dark mode tokens** — semantic tier is structured to support a `dark` mode token set, but no dark-mode values are defined yet. Kitchen Intelligence is the only current dark surface.

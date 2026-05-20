@@ -159,6 +159,16 @@ Zilla Slab TTF files ship at `dist/fonts/` for offline / self-hosting scenarios,
 
 Always `opacity: 0.5` on the entire component. Never a color swap. The component's current fill/stroke colors remain intact underneath the opacity reduction.
 
+### Dark mode
+
+Two modes ship: **Light** (default) and **Dark**. Dark is opt-in — set `data-theme="dark"` (or `class="dark"`) on a root element (`<html>` or any wrapper):
+
+```html
+<html data-theme="dark"> … </html>
+```
+
+Only the semantic color aliases that change are redeclared under the dark selector in `tokens.css` (surfaces invert to near-black, text to white, nav-selected flips, etc.). Primitives, spacing, radius, typography, and the brand/accent/status colors are mode-stable. Components consume semantic tokens, so they re-theme automatically with no per-component work. The dark values are ported 1:1 from the Figma "Semantic" collection (Dark mode) and documented in `tokens.json` under `$extensions.qu.modes.dark`. Tailwind's `dark:` variant is wired to both the `.dark` class and `[data-theme="dark"]`.
+
 ---
 
 ## Component API
@@ -336,4 +346,3 @@ Always `opacity: 0.5` on the entire component. Never a color swap. The component
 - Data table component (anatomy in `screen-anatomy.md`)
 - Kitchen Intelligence screen components (dark surface, 72px score, day-part switcher)
 - Chart components (recommend Recharts with cyan/gray color scheme)
-- Dark mode token set

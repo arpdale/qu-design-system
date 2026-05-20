@@ -15,6 +15,10 @@
  */
 
 module.exports = {
+  // Dark mode is driven by CSS custom properties in tokens.css
+  // ([data-theme="dark"], .dark). This enables `dark:` utility variants
+  // for consumers using either the class or the data-attribute strategy.
+  darkMode: ['selector', '[data-theme="dark"]'],
   theme: {
     extend: {
 
