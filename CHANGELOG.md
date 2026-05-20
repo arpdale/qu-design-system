@@ -4,6 +4,22 @@ Decision log — not just version history. Each entry captures *why* a decision 
 
 ---
 
+## v1.2.0 — 2026-05-20
+
+Release bundling three Figma↔code reconciliation changes: **Code Connect mappings**, **flat tiles**, and the **Dark mode token set** (detailed below). Minor bump: a new theming mode plus a visual change to existing tile components is more than a patch.
+
+### Code Connect mappings added
+
+**Parser-based Code Connect (`.figma.tsx`) for all 16 components (20 connections).**
+Figma's Dev Mode and the Figma MCP previously emitted guessed markup for our components; now they resolve to the real React component + props. Mappings live beside each component (`button.figma.tsx`, etc.), variant enums map exhaustively to props, and `figma.config.json` rewrites the source path to the published `@david-richard/notify-ds` import. `*.figma.tsx` is excluded from the tsup build and tsconfig, so nothing new ships to npm. Publishing is gated by Figma plan (Organization/Enterprise + Dev/Full seat) and run via `npm run figma:publish`.
+
+### Tiles are now flat (no resting shadow)
+
+**Removed the resting drop shadow from `MetricTile`, `StatCard`, and `StatusTile`.**
+The production dashboard tiles are flat — separation comes from the white card on the gray-50 page background, not a shadow. The interactive hover lift on clickable tiles is retained. `constraints.md` and `screen-anatomy.md` (which had asserted an always-on tile shadow) were corrected. The `component.tile.shadow` / `shadow/card` tokens remain but are now orphaned.
+
+---
+
 ## 2026-05-20 — Dark mode tokens ported from Figma
 
 **Dark mode is now a real, shipped mode — no longer a known gap.**
