@@ -11,7 +11,7 @@ import { cn } from "./utils"
  * that doesn't have an associated period-over-period comparison.
  *
  * Visual spec:
- *   Container: white card, 16px border-radius, shadow: 0 4px 4px rgba(0,0,0,0.04)
+ *   Container: white card, 16px border-radius, flat (no shadow)
  *   Label:     Inter Regular 13px, black (#000) — sits at the top
  *   Divider:   1px solid #EAEAEA
  *   Value:     Inter Bold 22px, black (#000) — sits below the divider
@@ -34,7 +34,6 @@ export function StatCard({ label, value, loading = false, className }: StatCardP
     <div
       className={cn(
         "flex flex-col gap-2 rounded-[16px] bg-white px-4 py-[14px]",
-        "shadow-[0_4px_4px_rgba(0,0,0,0.04)]",
         loading && "animate-pulse",
         className,
       )}

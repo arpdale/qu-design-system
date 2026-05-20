@@ -86,8 +86,8 @@ Rules extracted directly from production screenshots. Two lists: things that are
 
 ### Cards & Tiles
 - **Always 16px border-radius** on metric tiles.
-- **Always `box-shadow: 0 4px 4px rgba(0,0,0,0.06)`** on metric tiles and cards.
-- **Never a visible border** on cards — shadow only provides the elevation.
+- **Tiles and cards are flat — no resting shadow.** Their white fill on the gray-50 page background provides the separation. (An interactive tile may use a subtle shadow on hover only.)
+- **Never a visible border** on cards — the white-on-gray-50 contrast provides the separation.
 
 ### Empty States
 - **Always show a gray stroke icon** (not brand-colored) above the empty-state message.

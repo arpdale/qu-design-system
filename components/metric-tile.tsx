@@ -7,7 +7,7 @@ import { ChevronRight } from "./icons"
  * MetricTile — the core data display unit of the Qu Notify dashboard.
  *
  * Visual spec:
- *   Container: white card, 16px border-radius, shadow: 0 4px 4px rgba(0,0,0,0.06)
+ *   Container: white card, 16px border-radius, flat (no resting shadow)
  *   Label:     Inter Regular 12px, gray (#6B7280)
  *   Value:     Inter SemiBold 24px, black (#000)
  *   Trend:     TrendBadge (green/red/neutral)
@@ -94,9 +94,8 @@ export function MetricTile({
       tabIndex={onClick ? 0 : undefined}
       onKeyDown={onClick ? (e) => { if (e.key === "Enter" || e.key === " ") onClick() } : undefined}
       className={cn(
-        // Card shell
+        // Card shell — flat (no resting shadow); white fill separates it from the gray-50 page
         "flex flex-col gap-1 rounded-[16px] bg-white",
-        "shadow-[0_4px_4px_rgba(0,0,0,0.06)]",
         padding,
         // Interactive
         onClick && "cursor-pointer outline-none hover:shadow-[0_4px_12px_rgba(0,0,0,0.10)] transition-shadow duration-[120ms]",
