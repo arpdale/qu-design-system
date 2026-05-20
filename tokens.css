@@ -398,6 +398,48 @@
 
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   8b. DARK MODE  — semantic overrides
+   Ported 1:1 from the Figma "Semantic" collection (Dark mode). Only the semantic
+   color aliases that differ from Light are redeclared here; primitives, spacing,
+   radius, type, and brand/accent/status colors are mode-stable and inherit from
+   :root. Opt in by setting data-theme="dark" or class="dark" on a root element.
+   The @theme aliases (--color-background → --color-bg-card, --color-foreground →
+   --color-text-primary) cascade automatically because they reference these vars.
+───────────────────────────────────────────────────────────────────────────── */
+
+[data-theme="dark"],
+.dark {
+
+  /* Surfaces — invert to the near-black dark surface */
+  --color-bg-app:            var(--p-neutral-near-black);
+  --color-bg-card:           var(--p-neutral-near-black);
+  --color-bg-input:          var(--p-neutral-near-black);
+  --color-bg-input-disabled: var(--p-neutral-near-black);
+
+  /* Text hierarchy */
+  --color-text-primary:      var(--p-neutral-white);
+  --color-text-secondary:    var(--p-neutral-gray-400);
+  --color-text-tertiary:     var(--p-neutral-gray-400);
+  --color-text-disabled:     var(--p-brand-gray-300);
+  --color-text-inverse:      var(--p-neutral-black);
+  /* --color-text-on-brand stays black: cyan CTA fill is mode-stable */
+
+  /* Borders */
+  --color-border:            var(--p-brand-gray-300);
+  --color-input-border:      var(--p-brand-gray-300);
+
+  /* Nav/tab selected — inverts (white pill, black label) in dark */
+  --color-nav-selected:      var(--p-neutral-white);
+  --color-nav-selected-text: var(--p-neutral-black);
+
+  /* Inactive */
+  --color-inactive:            var(--p-brand-gray-300);
+  --color-inactive-foreground: var(--p-neutral-gray-400);
+  --color-inactive-border:     var(--p-brand-gray-300);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
    9. TAILWIND v4 @theme
    Exposes tokens as Tailwind utility classes (bg-primary, text-foreground, etc.)
    For Tailwind v3: use tailwind.config.js instead.
