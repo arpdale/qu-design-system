@@ -10,7 +10,7 @@ import { ChevronRight } from "./icons"
  * Closed: 8, Reconciled: 8) where each status row is itself the data point.
  *
  * Visual spec (matches MetricTile shell so it grids cleanly alongside):
- *   Container: white card, 16px border-radius, shadow: 0 4px 4px rgba(0,0,0,0.06)
+ *   Container: white card, 16px border-radius, flat (no resting shadow)
  *   Header:    Inter Regular 12px, gray, with optional right-aligned chevron
  *   Items:     Inter Regular 14px black; value portion is bold (font-weight 600)
  *   Layout:    column, gap-3 between header and item list, gap-1 within list
@@ -68,7 +68,6 @@ export function StatusTile({
       }
       className={cn(
         "flex flex-col gap-3 rounded-[16px] bg-white p-4",
-        "shadow-[0_4px_4px_rgba(0,0,0,0.06)]",
         onClick && !loading && "cursor-pointer outline-none",
         onClick && !loading && "hover:shadow-[0_4px_12px_rgba(0,0,0,0.10)] transition-shadow duration-[120ms]",
         onClick && !loading && "focus-visible:ring-2 focus-visible:ring-[var(--color-ring,#40CCF2)] focus-visible:ring-offset-2",

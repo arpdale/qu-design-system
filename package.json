@@ -56,7 +56,9 @@
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "figma:publish": "figma connect publish",
+    "figma:check": "figma connect parse"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -78,6 +80,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.2.1",
+    "@figma/code-connect": "^1.3.0",
     "@storybook/addon-a11y": "^10.4.0",
     "@storybook/addon-docs": "^10.4.0",
     "@storybook/addon-mcp": "^0.6.0",
