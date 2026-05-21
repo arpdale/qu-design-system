@@ -4,6 +4,28 @@ Decision log — not just version history. Each entry captures *why* a decision 
 
 ---
 
+## v1.5.0 — 2026-05-21
+
+### Wireframe fidelity mode — flip prototypes to low-fi for client reviews
+
+**Added a `data-fidelity="wireframe"` token block so any DS-built prototype can flip from the full brand system to a grayscale, flat, low-fi skin — without rebuilding screens in a separate tool.**
+
+High-fidelity prototypes invite high-fidelity critique: clients fixate on color, padding, and typeface when the point of an early review is flow and hierarchy. Rather than re-drawing flows in Balsamiq or a Figma wireframe kit, this lets the *real* prototype drop its polish on demand — feedback recalibrates to the bones, and you flip it back for the visual review.
+
+The mechanism mirrors Dark mode: a single block overrides only the semantic alias layer, so it cascades through every component that consumes tokens. Opt in with `data-fidelity="wireframe"` on a root element (composes with `data-theme`). The block:
+- collapses the brand + status palette to grayscale (trends read direction from the +/− glyph, not red/green),
+- removes depth (`--shadow-*` → `none`, gradients flattened to solid gray),
+- flattens every radius to one uniform value (pills/inputs become gently-rounded rects, the way wireframes read),
+- unifies all type roles onto one neutral sans so "which typeface" stops being a topic — sizes and weights are untouched, so hierarchy survives.
+
+**`MetricTile` now consumes its own tokens.** It hardcoded `bg-white` and `rounded-[16px]` despite the DS shipping `--color-bg-card` and `--tile-radius` for exactly those (and its own doc comment describing them). Both now point at the tokens so the flagship tile participates in theme + fidelity flips. No visual change in hi-fi.
+
+**Storybook:** a "Fidelity" toolbar control (Hi-fi / Wireframe) flips the whole canvas, backed by a `Foundations/Wireframe Mode` demo screen. The toggle doubles as an audit — anything still hardcoding literals won't flip.
+
+Minor bump: additive token block plus a non-breaking component tokenization, no API change.
+
+---
+
 ## v1.4.0 — 2026-05-21
 
 ### Lockup is now full-color vector + a `NotifyLockup` component
