@@ -8,10 +8,10 @@ import { ChevronRight } from "./icons"
  *
  * Visual spec:
  *   Container: white card, 16px border-radius, flat (no resting shadow)
- *   Label:     Inter Regular 12px, gray (#6B7280)
- *   Value:     Inter SemiBold 24px, black (#000)
- *   Trend:     TrendBadge (green/red/neutral)
- *   Sub-label: Inter Regular 12px, gray — secondary context (e.g. "vs last week")
+ *   Label:     Inter Regular 16px, gray (#6B7280)
+ *   Value:     Inter SemiBold 24px, black (#000) — md size; scales sm 20 / lg 30
+ *   Sub-label: Inter Regular 14px, gray — prior-period value (e.g. "$304.78")
+ *   Trend:     TrendBadge — Inter SemiBold 14px (green/red/neutral)
  *
  * Variants:
  *   size:    sm | md | lg
@@ -76,9 +76,9 @@ export function MetricTile({
   as: Tag = "div",
 }: MetricTileProps) {
   const valueSize = {
-    sm: "text-[22px]",
-    md: "text-[28px]",
-    lg: "text-[34px]",
+    sm: "text-[20px]",
+    md: "text-[24px]",
+    lg: "text-[30px]",
   }[size]
 
   const padding = {
@@ -109,7 +109,7 @@ export function MetricTile({
       <div className="flex items-center justify-between gap-2">
         <span
           className={cn(
-            "font-sans text-[14px] font-normal leading-tight",
+            "font-sans text-[16px] font-normal leading-tight",
             "text-[var(--color-text-tertiary,#6B7280)]",
             loading && "h-3 w-24 rounded bg-gray-200",
           )}
@@ -144,7 +144,7 @@ export function MetricTile({
       {(trend !== undefined || trendLabel) && !loading && (
         <div className="flex items-center justify-between gap-2">
           {trendLabel ? (
-            <span className="font-sans text-[13px] text-[var(--color-text-tertiary,#6B7280)]">
+            <span className="font-sans text-[14px] text-[var(--color-text-tertiary,#6B7280)]">
               {trendLabel}
             </span>
           ) : <span />}

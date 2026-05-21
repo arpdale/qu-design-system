@@ -204,7 +204,7 @@ Appears as an overlay on top of the Sign In screen (blurred behind).
 │  METRIC TILE GRID                   │  2 columns, 12px gap, 16px h-padding
 │                                     │
 │  [Net Sales tile]  [Checks tile]    │  white card, 16px radius, flat (no shadow)
-│  $345.58           11               │  label 12px gray, value 24px semibold
+│  $345.58           11               │  label 16px gray, value 24px semibold
 │  $304.78 ↑+11.8%   9 ↑+18.1%       │  comparison + TrendBadge
 │                                     │
 │  [Payments tile]   [Avg Check tile] │

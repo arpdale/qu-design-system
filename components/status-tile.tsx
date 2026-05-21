@@ -11,7 +11,7 @@ import { ChevronRight } from "./icons"
  *
  * Visual spec (matches MetricTile shell so it grids cleanly alongside):
  *   Container: white card, 16px border-radius, flat (no resting shadow)
- *   Header:    Inter Regular 12px, gray, with optional right-aligned chevron
+ *   Header:    Inter Regular 16px, gray, with optional right-aligned chevron
  *   Items:     Inter Regular 14px black; value portion is bold (font-weight 600)
  *   Layout:    column, gap-3 between header and item list, gap-1 within list
  *
@@ -75,7 +75,7 @@ export function StatusTile({
       )}
     >
       {/* Header */}
-      <div className="flex items-center justify-between gap-2 font-sans text-[12px] text-[var(--color-text-tertiary,#6B7280)]">
+      <div className="flex items-center justify-between gap-2 font-sans text-[16px] text-[var(--color-text-tertiary,#6B7280)]">
         <span>{label}</span>
         {!loading && onClick && (
           <span className="shrink-0" aria-hidden="true">
