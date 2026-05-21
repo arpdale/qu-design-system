@@ -4,6 +4,24 @@ Decision log — not just version history. Each entry captures *why* a decision 
 
 ---
 
+## v1.6.1 — 2026-05-21
+
+### Fix: InputField referenced dead token names (required asterisk stayed red in wireframe)
+
+A visual pass of wireframe mode caught the required-field asterisk (and error helper text) staying red. `input.tsx` referenced eight `--color-*` names that don't exist, so each silently fell back to its hardcoded literal and never participated in theme/fidelity flips:
+
+- `--color-brand-red` → `--color-input-required-mark` (the `*`; was stuck at `#EF2149`)
+- `--color-input-text-error` → `--color-error` (error helper text; was stuck at `#EF2149`)
+- `--color-input-bg` → `--color-bg-input`; `--color-input-bg-disabled` → `--color-bg-input-disabled`
+- `--color-input-border-default` → `--color-input-border`; `--color-input-icon-default` → `--color-input-icon`
+- `--color-input-text` → `--color-text-primary`
+
+Hi-fi values are identical (the dead names fell back to the same literals the real tokens hold), so this is non-visual in hi-fi — but inputs now correctly grayscale in wireframe and invert in dark mode. Patch bump.
+
+Known remaining: `drawer-section`'s `--color-drawer-text-primary` falls back to white; left as-is — it's a neutral on the always-dark drawer, not a color leak.
+
+---
+
 ## v1.6.0 — 2026-05-21
 
 ### Wireframe reconcile: `--color-accent` token + brand marks follow fidelity
