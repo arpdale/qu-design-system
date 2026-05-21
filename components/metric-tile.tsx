@@ -94,8 +94,9 @@ export function MetricTile({
       tabIndex={onClick ? 0 : undefined}
       onKeyDown={onClick ? (e) => { if (e.key === "Enter" || e.key === " ") onClick() } : undefined}
       className={cn(
-        // Card shell — flat (no resting shadow); white fill separates it from the gray-50 page
-        "flex flex-col gap-1 rounded-[16px] bg-white",
+        // Card shell — flat (no resting shadow); card fill separates it from the app page.
+        // Token-driven (--color-bg-card / --tile-radius) so it responds to theme + fidelity flips.
+        "flex flex-col gap-1 rounded-[var(--tile-radius)] bg-[var(--color-bg-card)]",
         padding,
         // Interactive
         onClick && "cursor-pointer outline-none hover:shadow-[0_4px_12px_rgba(0,0,0,0.10)] transition-shadow duration-[120ms]",

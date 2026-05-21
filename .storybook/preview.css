@@ -5,7 +5,20 @@
 html,
 body,
 #storybook-root {
-  background: var(--color-background, #ffffff);
-  color: var(--color-foreground, #0d2a4b);
-  font-family: var(--font-family-primary, 'Inter', system-ui, sans-serif);
+  /* Reference the real semantic tokens. The previous --color-background and
+     --font-family-primary names were never defined, so these silently fell
+     back. Pointing at the actual tokens lets theme + fidelity flips reach the
+     canvas itself. */
+  background: var(--color-bg-app, #f4f4f4);
+  color: var(--color-text-primary, #0d2a4b);
+  font-family: var(--font-primary, 'Inter', system-ui, sans-serif);
+}
+
+/* Wireframe enforcement (Storybook-only safety net).
+   The token block in tokens.css zeroes out the --shadow-* tokens, but a few
+   components still hardcode raw box-shadows (e.g. MetricTile's hover lift).
+   This catch-all guarantees a truly flat canvas in wireframe mode without
+   touching shipped components. Remove once shadows are fully tokenized. */
+[data-fidelity='wireframe'] * {
+  box-shadow: none !important;
 }
