@@ -115,6 +115,12 @@
   /* Interactive — secondary uses teal (not gray) */
   --color-interactive-secondary: var(--p-brand-teal);    /* Links, action labels, check numbers */
 
+  /* Accent foreground — the brand cyan used as a *foreground* (active icons,
+     stars, highlight text, the lockup bar). Distinct from --color-primary,
+     which is the cyan button *fill*: the two diverge in wireframe (this stays a
+     prominent gray; the fill goes light so dark labels read on top). */
+  --color-accent:                var(--p-brand-tech-blue);
+
   /* Borders */
   --color-border:           var(--p-neutral-gray-200);
   --color-border-focus:     var(--p-brand-tech-blue);
@@ -178,6 +184,7 @@
   --color-error-soft:           var(--p-accent-red-soft);
   --color-warning:              var(--p-accent-yellow);
   --color-warning-soft:         var(--p-accent-yellow-soft);
+  --color-warning-strong:       #92680E;                    /* Readable amber for text/icons on warning-soft */
   --color-alert:                var(--p-accent-orange);
   --color-alert-soft:           var(--p-accent-orange-soft);
 
@@ -476,6 +483,7 @@
   --color-text-link:         #404040;
 
   --color-interactive-secondary: #525252;
+  --color-accent:                #525252;
 
   /* Borders / focus */
   --color-border:            #C9C9C9;
@@ -539,6 +547,7 @@
   --color-error-soft:           #E5E5E5;
   --color-warning:              #737373;
   --color-warning-soft:         #E5E5E5;
+  --color-warning-strong:       #525252;
   --color-alert:                #737373;
   --color-alert-soft:           #E5E5E5;
 

@@ -4,6 +4,20 @@ Decision log — not just version history. Each entry captures *why* a decision 
 
 ---
 
+## v1.6.0 — 2026-05-21
+
+### Wireframe reconcile: `--color-accent` token + brand marks follow fidelity
+
+Follow-up to v1.5.0. The wireframe flip only reaches things that consume tokens, and an audit of the consumer app surfaced two gaps the token set didn't cover:
+
+- **No semantic home for "brand cyan as a foreground."** `--color-primary` is the cyan button *fill* — a light gray in wireframe, so dark labels read on top. But cyan is also used as a *foreground*: active icons, the saved-views star, highlight text, the lockup bar. A light-gray fill token is too faint there, and it would invert the star (active lighter than inactive). Added **`--color-accent`** (cyan in hi-fi, a prominent `#525252` in wireframe) as the correct token for foreground accents.
+- **Brand marks were hard-cyan.** `QuMark` and `NotifyLockup` hardcoded the accent bar as `#40CCF2`, so it stayed cyan when everything else flipped. Both now bind the bar to `var(--color-accent)` — cyan in hi-fi, grayscale in wireframe. Foreground glyphs still use `currentColor`.
+- **`badge.tsx` warning text** hardcoded `#92680E` (no token). Added **`--color-warning-strong`** (amber in hi-fi, gray in wireframe) and pointed the warning variant at it.
+
+All additive; hi-fi output is unchanged → minor bump to 1.6.0.
+
+---
+
 ## v1.5.0 — 2026-05-21
 
 ### Wireframe fidelity mode — flip prototypes to low-fi for client reviews
