@@ -4,6 +4,26 @@ Decision log — not just version history. Each entry captures *why* a decision 
 
 ---
 
+## v1.4.0 — 2026-05-21
+
+### Lockup is now full-color vector + a `NotifyLockup` component
+
+**Replaced the `logo-notify-lockup.svg` asset and added a `NotifyLockup` React component, both built from the official Figma lockup (`Qu_Logo_secondary_rgb` + outlined NOTIFY).**
+
+The old lockup asset rendered "u" and "NOTIFY" as live `<text>` in Red Hat — fonts the package doesn't even ship. SVG loaded via `<img>` can't use page web fonts, so the wordmark fell back to a generic sans-serif everywhere (including our own Dashboard/Inventory headers). It was also monochrome (black Q + gray divider), which didn't match the official brand lockup.
+
+Both surfaces are now sourced from Figma and fully outlined (zero font dependency):
+- **`assets/logo-notify-lockup.svg`** — the full-color official lockup: black Qu mark with the **cyan accent bar (#40CCF2)** and the outlined NOTIFY wordmark. The old gray `|` divider is gone (the official lockup has none). This is a **visual change** for existing `<img>` consumers: headers go monochrome → color.
+- **`components/notify-lockup.tsx`** (`NotifyLockup`) — mirrors `QuMark`: foreground (Q, u, ®, NOTIFY) uses `currentColor` so consumers recolor via the `color` prop (white-on-dark, etc.); the cyan bar is fixed `#40CCF2` and does not recolor. Takes `width`, derives `height` from the 278.77:58 aspect. Exported from the package root, shown under `Brand/` in Storybook.
+
+**Fill model — consistent with `QuMark`:** foreground = `currentColor`, brand accent = fixed cyan. The static asset is therefore black-by-default in an `<img>` and recolorable when inlined; the component is the React vehicle for recoloring.
+
+**Brand cyan reconciled to `--color-primary` (#40CCF2).** `QuMark` and `logo-qu.svg` previously used `#41CCF2` (off by one digit from the brand primary). Both are now `#40CCF2` (`--p-brand-tech-blue`), so every cyan in the package — components, tokens, and all three logo surfaces — is a single value.
+
+Minor bump: additive component + an asset refresh, no breaking API.
+
+---
+
 ## v1.3.0 — 2026-05-21
 
 ### Added `QuMark` — the recolorable brand mark component

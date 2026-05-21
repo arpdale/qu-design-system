@@ -51,3 +51,6 @@ export type { DrawerSectionProps, DrawerItemProps, DrawerActionProps } from "./d
 
 export { QuMark }                                       from "./qu-mark"
 export type { QuMarkProps }                             from "./qu-mark"
+
+export { NotifyLockup }                                 from "./notify-lockup"
+export type { NotifyLockupProps }                       from "./notify-lockup"
