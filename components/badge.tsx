@@ -29,7 +29,7 @@ const badgeVariants = cva(
         default: "bg-[var(--color-inactive,#DEDEDE)] text-[var(--color-text-primary,#000)]",
         success: "bg-[var(--color-success-soft,#B3F5D1)] text-[var(--color-success,#16A34A)]",
         error:   "bg-[var(--color-error-soft,#FFC9C9)] text-[var(--color-destructive,#EF2149)]",
-        warning: "bg-[var(--color-warning-soft,#FFF085)] text-[#92680E]",
+        warning: "bg-[var(--color-warning-soft,#FFF085)] text-[var(--color-warning-strong,#92680E)]",
         alert:   "bg-[var(--color-alert-soft,#EAC1C3)] text-[var(--color-alert,#FA6A0A)]",
         info:    "bg-[var(--color-info-soft,#BEDBFF)] text-[var(--color-info,#2F80ED)]",
         neutral: "bg-transparent text-[var(--color-text-secondary,#6B7280)] border border-[var(--color-border,#C9C9C9)]",

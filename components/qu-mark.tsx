@@ -9,8 +9,9 @@ export type QuMarkProps = Omit<React.SVGAttributes<SVGSVGElement>, 'width' | 'he
  * QuMark — the Qu brand mark (the "Qu" wordmark with the cyan top stripe).
  *
  * The two letterform paths use `currentColor`, so recolor the mark via the
- * `color` prop or CSS `color` — e.g. white on a dark surface. The top stripe
- * is the fixed brand cyan (#40CCF2, --color-primary) and does NOT recolor.
+ * `color` prop or CSS `color` — e.g. white on a dark surface. The top stripe is
+ * the brand cyan, bound to `--color-accent`: it stays cyan in hi-fi and grays
+ * with the rest of the UI under wireframe fidelity (data-fidelity="wireframe").
  *
  * This is the inline, recolorable component. For a static, default-color
  * placement an <img> of `@david-richard/notify-ds/assets/logo-qu.svg` is fine;
@@ -39,7 +40,7 @@ export function QuMark({ width = 200, ...props }: QuMarkProps) {
       />
       <path
         d="M51.9873 0.428978H28.4473V8.12436H51.9873V0.428978Z"
-        fill="#40CCF2"
+        fill="var(--color-accent,#40CCF2)"
       />
     </svg>
   )
