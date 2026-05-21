@@ -17,6 +17,17 @@ Minor bump: additive, non-breaking. The `assets/logo-qu.svg` and `logo-notify-lo
 
 **Follow-up (not in this release):** no `.figma.tsx` Code Connect mapping yet — needs a Figma node for the mark to map against.
 
+### Fixed tile typography drift
+
+**Restored the tile type ramp to the original source design.** The synced DS had drifted on tile label/value sizes, so `MetricTile`, `StatCard`, and `StatusTile` rendered inconsistent label sizes (14 / 13 / 12px) and the wrong value size. Realigned to the canonical tile spec — top-to-bottom: **label 16 Regular · value 24 SemiBold · sub-value 14 Regular · trend 14 SemiBold**.
+
+- `MetricTile`: label 14→16; value `md` 28→24 (size axis re-centered sm/md/lg = 20/24/30); sub-value 13→14; `TrendBadge` 13/Medium→14/SemiBold.
+- `StatCard`: label 13→16; value 22/Bold→24/SemiBold.
+- `StatusTile`: header 12→16 (item rows already 14 Reg / 14 SemiBold).
+- Figma `MetricTile`/`StatCard`/`StatusTile` components updated to match; `screen-anatomy.md` label note corrected 12px→16px.
+
+Note: the `TrendBadge` weight change (Medium→SemiBold) is global, so standalone `<TrendBadge>` usages also render 14/SemiBold.
+
 ---
 
 ## v1.2.0 — 2026-05-20
