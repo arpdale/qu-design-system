@@ -4,6 +4,32 @@ Decision log — not just version history. Each entry captures *why* a decision 
 
 ---
 
+## v1.3.0 — 2026-05-21
+
+### Added `QuMark` — the recolorable brand mark component
+
+**Promoted the inline `QuMark` SVG (previously hand-copied in the app's Splash screen) into the DS as a first-class React component.**
+The brand mark exists as a static SVG asset (`assets/logo-qu.svg`), but an `<img>` of it can't be recolored — its letterforms are `fill="currentColor"`, which resolves to a fixed color inside an isolated `<img>`. The Splash screen needs white letterforms on a dark background (with the cyan stripe preserved), so it had been carrying a verbatim inline copy of the path data, with a comment anticipating exactly this promotion. That copy was a drift hazard: a logo change in the DS would not propagate to it.
+
+`QuMark` is an inline `<svg>` (mirroring the icon component pattern — `currentColor` letterforms, `displayName`, props spread onto the root) so consumers recolor it via the `color` prop or CSS. It takes `width` and derives `height` from the fixed 52:31 aspect ratio. The top stripe stays brand cyan (`#41CCF2`) and intentionally does not recolor. Lives under `Brand/` in Storybook to keep it distinct from the 24px UI icon set, and is exported from the package root: `import { QuMark } from '@david-richard/notify-ds'`.
+
+Minor bump: additive, non-breaking. The `assets/logo-qu.svg` and `logo-notify-lockup.svg` assets are unchanged and remain the right choice for static, default-color placements.
+
+**Follow-up (not in this release):** no `.figma.tsx` Code Connect mapping yet — needs a Figma node for the mark to map against.
+
+### Fixed tile typography drift
+
+**Restored the tile type ramp to the original source design.** The synced DS had drifted on tile label/value sizes, so `MetricTile`, `StatCard`, and `StatusTile` rendered inconsistent label sizes (14 / 13 / 12px) and the wrong value size. Realigned to the canonical tile spec — top-to-bottom: **label 16 Regular · value 24 SemiBold · sub-value 14 Regular · trend 14 SemiBold**.
+
+- `MetricTile`: label 14→16; value `md` 28→24 (size axis re-centered sm/md/lg = 20/24/30); sub-value 13→14; `TrendBadge` 13/Medium→14/SemiBold.
+- `StatCard`: label 13→16; value 22/Bold→24/SemiBold.
+- `StatusTile`: header 12→16 (item rows already 14 Reg / 14 SemiBold).
+- Figma `MetricTile`/`StatCard`/`StatusTile` components updated to match; `screen-anatomy.md` label note corrected 12px→16px.
+
+Note: the `TrendBadge` weight change (Medium→SemiBold) is global, so standalone `<TrendBadge>` usages also render 14/SemiBold.
+
+---
+
 ## v1.2.0 — 2026-05-20
 
 Release bundling three Figma↔code reconciliation changes: **Code Connect mappings**, **flat tiles**, and the **Dark mode token set** (detailed below). Minor bump: a new theming mode plus a visual change to existing tile components is more than a patch.

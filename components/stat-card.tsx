@@ -12,9 +12,9 @@ import { cn } from "./utils"
  *
  * Visual spec:
  *   Container: white card, 16px border-radius, flat (no shadow)
- *   Label:     Inter Regular 13px, black (#000) — sits at the top
+ *   Label:     Inter Regular 16px, black (#000) — sits at the top
  *   Divider:   1px solid #EAEAEA
- *   Value:     Inter Bold 22px, black (#000) — sits below the divider
+ *   Value:     Inter SemiBold 24px, black (#000) — sits below the divider
  *
  * Usage:
  *   <StatCard label="Check Count" value="8,013" />
@@ -40,7 +40,7 @@ export function StatCard({ label, value, loading = false, className }: StatCardP
     >
       <span
         className={cn(
-          "font-sans text-[13px] leading-tight text-[var(--color-text-primary,#000)]",
+          "font-sans text-[16px] leading-tight text-[var(--color-text-primary,#000)]",
           loading && "h-3 w-24 rounded bg-gray-200",
         )}
       >
@@ -49,7 +49,7 @@ export function StatCard({ label, value, loading = false, className }: StatCardP
       <hr className="m-0 border-0 border-t border-[#EAEAEA]" />
       <span
         className={cn(
-          "font-sans text-[22px] font-bold leading-tight text-[var(--color-text-primary,#000)]",
+          "font-sans text-[24px] font-semibold leading-tight text-[var(--color-text-primary,#000)]",
           loading && "mt-1 h-6 w-32 rounded bg-gray-200",
         )}
       >

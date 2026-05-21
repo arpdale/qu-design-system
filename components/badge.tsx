@@ -102,7 +102,7 @@ export function TrendBadge({ value, decimals = 1, showArrow = true, className, .
     <span
       className={cn(
         "inline-flex items-center gap-1 whitespace-nowrap select-none",
-        "font-sans text-[13px] font-medium leading-tight",
+        "font-sans text-[14px] font-semibold leading-tight",
         "[&_svg]:size-3.5",
         colorClass,
         className,
