@@ -30,18 +30,18 @@ const pillVariants = cva(
   [
     "flex items-center gap-2",
     "h-12 w-full rounded-full px-4",
-    "border-[1.5px] bg-[var(--color-input-bg,#fff)]",
+    "border-[1.5px] bg-[var(--color-bg-input,#fff)]",
     "transition-colors duration-[120ms]",
   ],
   {
     variants: {
       state: {
-        normal:   "border-[var(--color-input-border-default,#C9C9C9)]",
+        normal:   "border-[var(--color-input-border,#C9C9C9)]",
         active:   "border-[var(--color-input-border-active,#40CCF2)] ring-0",
-        filled:   "border-[var(--color-input-border-default,#C9C9C9)]",
+        filled:   "border-[var(--color-input-border,#C9C9C9)]",
         error:    "border-[var(--color-input-border-error,#EF2149)]",
-        disabled: "border-[var(--color-input-border-default,#C9C9C9)] bg-[var(--color-input-bg-disabled,#F4F4F4)] cursor-not-allowed opacity-50",
-        readonly: "border-[var(--color-input-border-default,#C9C9C9)] bg-[var(--color-input-bg-disabled,#F4F4F4)]",
+        disabled: "border-[var(--color-input-border,#C9C9C9)] bg-[var(--color-bg-input-disabled,#F4F4F4)] cursor-not-allowed opacity-50",
+        readonly: "border-[var(--color-input-border,#C9C9C9)] bg-[var(--color-bg-input-disabled,#F4F4F4)]",
       },
     },
     defaultVariants: { state: "normal" },
@@ -126,7 +126,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
     const iconColor =
       state === "active"  ? "text-[var(--color-input-icon-active,#40CCF2)]"  :
       state === "error"   ? "text-[var(--color-input-icon-error,#EF2149)]"   :
-      "text-[var(--color-input-icon-default,#B1B1B1)]"
+      "text-[var(--color-input-icon,#B1B1B1)]"
 
     return (
       <div className={cn("flex w-full flex-col gap-1.5", className)}>
@@ -136,7 +136,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
           <label className="flex items-center gap-0.5 font-ui text-[18px] font-medium leading-tight text-[var(--color-text-primary,#000)]">
             {label}
             {required && (
-              <span className="text-[var(--color-brand-red,#EF2149)]" aria-hidden="true"> *</span>
+              <span className="text-[var(--color-input-required-mark,#EF2149)]" aria-hidden="true"> *</span>
             )}
           </label>
         )}
@@ -166,7 +166,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
             className={cn(
               "min-w-0 flex-1 bg-transparent outline-none",
               "font-sans text-[16px] font-normal",
-              "text-[var(--color-input-text,#000)] placeholder:text-[var(--color-input-placeholder,#B1B1B1)]",
+              "text-[var(--color-text-primary,#000)] placeholder:text-[var(--color-input-placeholder,#B1B1B1)]",
               "disabled:cursor-not-allowed",
             )}
             aria-invalid={state === "error" || undefined}
@@ -212,7 +212,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
             className={cn(
               "font-sans text-[12px] font-normal leading-tight px-1",
               errorMessage
-                ? "text-[var(--color-input-text-error,#EF2149)]"
+                ? "text-[var(--color-error,#EF2149)]"
                 : "text-[var(--color-text-tertiary,#6B7280)]",
             )}
           >
