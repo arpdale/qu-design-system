@@ -31,6 +31,9 @@ export type { BottomNavProps, NavItem }                 from "./bottom-nav"
 export { Badge, TrendBadge }                            from "./badge"
 export type { BadgeProps, TrendBadgeProps }             from "./badge"
 
+export { IconBadge }                                    from "./icon-badge"
+export type { IconBadgeProps, IconBadgeColor }          from "./icon-badge"
+
 export { MetricTile, MetricTileGrid }                   from "./metric-tile"
 export type { MetricTileProps, MetricTileGridProps }    from "./metric-tile"
 
