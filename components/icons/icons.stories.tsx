@@ -12,7 +12,7 @@ const ICON_GROUPS: Record<string, string[]> = {
   ],
   Business: ['Dashboard', 'Package', 'Store', 'TrendingUp', 'TrendingDown'],
   Interface: [
-    'Bell', 'BellDot', 'Calendar', 'Search', 'Filter', 'Sliders',
+    'Bell', 'Calendar', 'Search', 'Filter', 'Sliders',
     'MoreVertical', 'MoreHorizontal', 'Plus', 'Minus', 'Check', 'CheckBadge',
     'AlertCircle', 'Info', 'HelpCircle', 'FaceId', 'User',
     'View', 'Hide', 'Lock', 'OpenLock', 'Clock', 'Local', 'Extend',
